@@ -1,0 +1,119 @@
+
+moneyback.php (modelo): (YA)
+linea 453: (AGREGUE LA FUNCION PARA EL TOTAL PENDIENTE)	
+
+money_formulario.php(vista) (YA)
+linea 406
+
+money.php (YA)
+linea 49 agregue: $datos['totalPendiente']=$this->moneyBack->get_totalGanado_pendiente($this->session->userdata('id')); 
+
+
+/**** CAMBIOS A SUBIR NUEVOS ****/01-02-2012 ******** (YA) **********
+------------------------------------------
+herlper: (YA)
+.-emails_helper.php (plantillas)//se corrigio el formato de todas plas plantillas y agregue un parametro a la funciòn get_email_point_comment() para el id del plan. 
+
+
+add file(imagenes para las plantillas;esquinas redondas):
+.-statics/img/mailabajo1.jpg (YA)
+.-statics/img/mailTop1.jpg (YA)
+
+modulo nuevo: (YA)
+.-comentados(controllers, models, views)//esto es para redireccionar con la url del correo muestre el comentario.
+
+modulo MONEY: (YA)
+
+moneyback.php: (YA)
+.-linea 480  get_comision_total(); //esto es la funcion para sacar el status diferente de  '0'. 
+.-linea 507 get_comision_pendiente();//esto es la funcion para sacar el total pendiente con status = '0' esto es para el resultado color naranja.
+
+money.php: (YA)
+.-linea 49 $datos['totalpendiente']// modifique esto para corregir el error del total pendiente.
+
+modulo PLANESUSUARIOS: (YA)
+controlador: planesusuarios
+.-linea 900 agregue un parametro $idP a la funcion get_email_point_comment() para pasar el id del plan; este id servira para obtener la url del mail que se envia.
+
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/02-02-2012 ******** (YA) ***********
+modulo: (YA)
+inboxusuarios
+views: (YA)
+recibidos.php
+.-linea 97: cambie: substr($recibidos->inboxnMensaje,0,25) por esto:substr($recibidos->inboxnMensaje,0,50)
+solo le cambie de 25 a 50 ;)
+
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/13-02-2012 ******* (YA) *********
+modulo nuevo: (YA)
+.-comentados
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/14-02-2012 ******** (YA) *********
+.- menu de "mi cartera"
+modulo:money (YA)
+view:money_formulario.php
+
+modulo:transacciones (YA)
+view:
+.-transferencias.php 
+.-edo_cuanta.php
+.-pendientes_mov.php
+.-retiros.php
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/17-02-2012 
+pulzosAdmin
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/20-02-2012 ******** (YA) *********
+****MENU MI CARTERA*****************
+modulo : money
+view:money_formulario.php (YA)
+modulo: transacciones 	  (YA)
+view:edo_cuenta.php        (YA)
+	pendientes_movs.php  (YA)
+	retiros.php      (YA)
+	transferencias.php   (YA)
+
+***INBOX***  ******** (YA) *********
+modulo: inboxusuarios   ******** (YA) *********
+controllers: inboxusuarios.php linea:233 (cambien el parametro) (YA)
+	esto era antes : $this->inboxUsuario->change_status($this->session->userdata('id'));
+	ahora es esto:   $this->inboxUsuario->change_status($id);
+
+models: inboxusuario.php linea 222(cambien la contidion de la consulta) (YA)
+	esto era antes: $this->db->where('inboxnUsuarioRecibeId', $inboxId);
+
+	ahora es esto:  $this->db->where('inboxnUsuarioRecibeId',$this->session->userdata('id'));
+			$this->db->where('inboxnUsuarioId ',$inboxId);
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/21-02-2012 ****22-02-2012  ******** (YA) ***********
+modulo negocios
+controllers:negocios.php linea 654 , y tambien en  update_header_notifications($id)(YA)
+views: header_login.php linea 304,(YA)
+		actualizar_header.php(YA)
+
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/24-02-2012 ******** (YA) ***********
+modulo: developers
+views: header.php linea:40 (faltaba cerrar el if) (YA)
+
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/24-02-2012 ******** (YA) ***********
+modulo: usuarios
+views:
+		edit_ubicacion.php (YA)
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/29-02-2012 //esto nose porque no se subio, ahorita lo subo 02-03-12//////******** (YA) ***********	
+actualizar ciudad header de usuarios
+modulo:usuarios
+views: header_login.php		(YA)
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/2-03-2012  ******** (YA) ***********
+ACTUALIZA HEADER MSJ
+modulo: inboxusuarios
+views:recibidos.php		(YA)
+--------------------------------------------
+/**** CAMBIOS A SUBIR NUEVOS ****/02-03-2012 ******** (YA) ***********
+giros y subgiros
+modulo:negocios
+views: crear.php	(YA)

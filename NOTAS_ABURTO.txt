@@ -1,0 +1,49 @@
+
+Esto es lo q falla hasta ahorita:
+
+ 
+
+Como empresa
+
+ 
+
+1.- No me deja cambiar la foto para poner la de mi restaurante (SI CAMBIA)
+
+ 
+
+2.- en el cuadro de la izq de expertos dice puzos de ( la empresa ) en lugar de pulzos (SE CAMBIA)
+
+ 
+
+3.- En busqueda no me da el dato del nomb re de persona o personas q busco (NO FUNCIONA)
+
+ 
+
+4.- No se como dar de alta a mis propios seguidores o clientes frecuentes que quiera invitar a ser mis seguidores (UN NEGOCIO NO DA DE ALTA, SOLO LOS SEGUIDORES)
+
+ 
+
+5.- todo lo que hago me lo marca con errores en la parte inferior izq de la página (NO MARCA NADA NI EN EXPLORER)
+
+ 
+
+Como usuario
+
+ 
+
+1.- en solicitudes no me hace nada (YA DEBE HACER ALGO )
+ 
+
+2.- Mensaje aparece con errores (YA SE SOLUCIONO)
+
+
+3.- No subió foto para cambiar avatar (YA SE ACTUALIZA)
+
+
+4.- no me deja buscar amigos (SI BUSCA PERO NO POR NOMBRE)
+
+
+5.- no me deja hacer nada en solicitudes y mensajes (YA DEBE DE DEJAR HACER ALGO)
+
+
+6.- no esta ñink para solicitar amistades (SI APARECE)

@@ -1,0 +1,107 @@
+ul.tabs{
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 32px;
+    /*border-left: 1px solid #660066;*/
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-radius-topleft: 10px;
+    -ms-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -khtml-border-radius-topleft: 10px;
+    -khtml-border-radius-topright: 10px;
+}
+
+ul.tabs li{
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 31px;
+    line-height: 31px;
+  /*  border: 1px solid #660066;*/
+    border-left: none;
+    margin-bottom: -1px;
+    overflow: hidden;
+    position: relative;
+    background: #8D6E98;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-radius-topleft: 10px;
+    -ms-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -khtml-border-radius-topleft: 10px;
+    -khtml-border-radius-topright: 10px;
+}
+
+ul.tabs li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.2em;
+    padding: 0 20px;
+    /*border: 1px solid #FFFFFF;*/
+    outline: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-radius-topleft: 10px;
+    -ms-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -khtml-border-radius-topleft: 10px;
+    -khtml-border-radius-topright: 10px;
+}
+
+ul.tabs li a:hover{
+    background: #A71E9F;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-radius-topleft: 10px;
+    -ms-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -khtml-border-radius-topleft: 10px;
+    -khtml-border-radius-topright: 10px;
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover{
+    background: #660068;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-radius-topleft: 10px;
+    -ms-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -khtml-border-radius-topleft: 10px;
+    -khtml-border-radius-topright: 10px;
+   /* border-bottom: 1px solid #660066;*/
+}
+
+.tab_container{
+    border: 1px solid #999;
+    border-top: none;
+    overflow: none;
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.tab_content{
+    padding: 20px;
+    font-size: 1.2em;
+}

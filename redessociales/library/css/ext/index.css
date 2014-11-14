@@ -1,0 +1,751 @@
+@charset "utf-8";
+/* CSS Document */
+/* Background del body */
+/* Background del header de pulzos con logo */
+.box{
+    background-color: #FFFFFF;/*999999;*/
+}
+
+.caja{
+    padding: 1em;
+    display: none;
+
+}
+
+.box_address{
+    background-color: #CCCCCC;
+}
+
+.box_body{
+    background-color: #FFFFFF;
+}
+/* Imagen de cambio de boton */
+input#ingreso{
+	background-image:url(../../img/ingresar.png);
+	width:76px;
+	height:30px;
+    border: none;
+}
+
+input#recuperar{
+    background-image:url(../../img/boton_Enviar_pass.png);/*../../img/enviarN.png);*/
+    width: 80px;/*100px;*/
+    height: 32px;/*30px;*/
+    border:none;
+}
+
+input#entrar{
+    background-image:url(../../img/entrarN.png);
+    width:100px;
+    height:30px;
+    border:none;
+}
+
+input#emailI{
+    width: 120px;
+}
+
+input#passwordI{
+    width: 120px;
+}
+
+a#olvidaste{
+    margin-left: 12px;
+}
+input#Invita{
+    background-color: transparent;
+	background-color: transparent;
+	background-image:url(../../img/invitar.png);
+	background-repeat:no-repeat;
+	border:none;
+	width:156px;
+	height:60px;
+}
+
+/* Background para el header de la cabecera, liquido*/
+
+
+/* Espacio entre parrafos */
+p#registro{
+	margin-top:3px;
+	margin-bottom:5px;
+}
+
+/* Color de los titulos y los margenes */
+#titulo{
+	color:#E6E7E8;
+    font-size: 10pt;
+}
+
+#titulo1{
+	color:#E6E7E8;
+	font-weight:bolder;
+}
+
+/* Letras -- tamaños y color -- */
+/*div#menu{
+	font-family:"Bell Gothic Std Black";
+	color:#EF3F69;
+	font-size:17pt;
+	font-weight:bolder;
+}
+
+div#textos{
+    font-family:"Bell Gothic Std Black";
+    color:#000000;
+    font-size:24pt;
+    font-weight:bolder;
+	line-height:30px;
+}
+
+div#descripcion{
+    font-family:"Bell Gothic Std Black";
+    color:#000000;
+    font-size:12pt;
+}
+
+div#titulos_footer{
+    font-family:"Bell Gothic Std Black";
+    color:#000000;
+    font-size:14pt;
+    font-weight:bolder;
+}*/
+
+.texto1{
+	color:#E6E7E8;
+	font: "Myriad";
+	font-size:10pt;
+	font-weight:bolder;
+}
+
+.texto2{
+	color:#E6E7E8;
+	font:"Myriad";
+	font-size:10pt;
+}
+
+/*#no_match{
+	color:#EF3F69;
+	font-family:"Bell Gothic Std Black";
+	font-size:16pt;
+}*/
+
+.opciones{
+    color:#240004;
+    font-family:"Bell Gothic Std Black";
+    font-size:10pt;
+    text-decoration: none;
+}
+
+/* Estilos de la caja de texto y el boton buscar de perfil */
+.buscar{
+	background-image:url(../../img/buscar.png);
+	background-repeat:no-repeat;
+	border:none;
+	width:21px;
+	height:20px;
+        margin-left:9px;
+}
+
+.registrar{	
+	background-color: transparent; 
+	background-color: transparent;
+	background-image:url(../../img/registar.png);
+	background-repeat:no-repeat;
+	border:none;
+	width:80px;
+	height:79px;
+}
+
+.empresas{
+	background-color: transparent;
+	background-color: transparent;
+	background-image:url(../../img/entrar.png);
+	background-repeat:no-repeat;
+	border:none;
+	width:156px;
+	height:60px;
+}
+
+/* Estilos de la caja de comentarios */
+div#imagen{
+	background-image:url(../../img/nube_invitacion.png);
+	background-repeat:no-repeat;
+    height: 45px;
+}
+
+/* Fondo de Footer y mas */
+
+#f-footer{
+	background-image:url(../../img/fondo.png);
+	background-repeat:no-repeat;
+}
+
+.pulzador{
+    height: 35px;
+    width: 400px;
+}
+
+.pulzador_negocios{
+    height: 35px;
+    width: 600px;
+}
+/* Cambios a ciertas clases de blueprint CSS */
+/* Cambios para agregar la nube de la invitacion */
+#imagen_fondo{
+    background-image:url(../../img/nube_invitacion.png);
+}
+
+#notificaciones{
+    background-image: url(../../img/notificaciones.gif);
+    background-repeat: none;
+    width: 62px;
+    height: 65px;
+}
+/* Agregó axoloteDeAccion */
+.status-1{
+    background-color: #e20045;
+}
+
+.pulzo-aceptado{
+    background-color: #e20045;
+}
+
+.seleccionado{
+    text-decoration: none;
+}
+
+/**************************************************************************** CAMBIOS A LA PARTE DEL REGISTRO **************************************************/
+/** alineacion texto registro **/
+.textForm{
+    text-align: right;
+    vertical-align: middle;
+    color: #FFFFFF;
+}
+
+/** division entre bloques **/
+.separacion{
+    margin-top: 8px;
+}
+
+.separacion2{
+    margin-top: 3px;
+}
+
+/** tamaño cajas texto **/
+
+.textMonths{
+    width: 108px;
+    height: 24px;
+}
+
+.textYears{
+    width: 58px;
+    height: 24px;
+}
+
+.textDays{
+    width: 58px;
+    height: 24px;
+}
+
+.fondo{
+    background-color: #9E3493;
+}
+
+div#mapa_back{
+    background-image: url(../../img/croquis-pulzos.jpg);
+    width: 472px;
+    height: 324px;
+}
+
+#texto_slogan{
+    margin-top: 92px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#titulo_body{
+    color: #FFFFFF;
+    font-size: 26px;
+    font-family: "Myriad";
+    font-weight: bold;
+}
+
+.texto_body{
+    margin-top: 22px;
+    margin-right: 8px;
+    color: #FFFFFF;
+    font-family: "Myriad";
+    font-size: 12px;
+}
+
+#busqueda_index{
+    margin-top: -5px;/*100px;*/
+    background-color: #531F5B;
+}
+
+#busqueda_index2{
+    margin-top: 100px;
+    background-color: #531F5B;
+}
+
+.busqueda-index{
+    margin-top: 2px;
+}
+
+input#buscar_pulzos{
+    background-image: url(../../img/icono-pulzos.jpg);
+    width: 60px;
+    height: 60px;
+    border: none;
+}
+
+#buscar_texto{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 352px;
+    height: 24px;
+}
+
+#top_registro{
+    margin-top: 15px;
+    color: #D6E040;
+}
+
+font#aunTexto{
+    font-size: 12px;
+}
+
+font#registrateTexto{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.inputRegistro{
+    width: 246px;
+    height: 24px;
+}
+
+div#separacion3{
+    margin-top: 15px;
+}
+
+input#registro{
+    margin-top: 10px;
+    background-image: url(../../img/boton_Registrar.png);/*url(../../img/registrar01.gif);*/
+    width: 80px;
+    height: 32px;
+    border: none;
+}
+
+a.enlaceRegistro{
+    text-decoration: none;
+    vertical-align: middle;
+    color: #D6E040;
+    margin-top: 10px;;
+    margin-right: 60px;
+}
+/****************************************************** PARTE DEL HEADER DE LA PAGINA PRINCIPAL ****************************************************************/
+/** ESTILOS DEL HEADER **/
+/** header liquido **/
+#header1{
+    background-color: #531F5B;
+}
+
+#header1-1{
+    background-color: #FFFFFF;
+}
+
+#header2{
+    background-color: #65366C;
+}
+
+#header-menu{
+    background-image: url(../../img/bg-header.gif);
+    height: 28px;
+    color: #FFFFFF;
+}
+
+/** altura header **/
+#header_login_form{
+    padding-top: 15px;
+    margin-left: -11px;
+}
+
+#header_ingreso{
+    margin-left: 71px;/*24px;*/
+    padding-top: 30px;/*35px;*/
+    margin-right: 8px;
+}
+
+#tab_ingreso{
+    margin-left: 80px;
+    margin-top: 3px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+#border_bottom{
+    margin-bottom: 10px;
+}
+
+a.tab-ingreso{
+    margin-left: 30px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.input_ingreso{
+    width:116px;
+    height:20px;
+}
+
+#emailIngreso{
+    width: 116px;
+    height: 20px;
+}
+
+#passwordIngreso{
+    width: 116px;
+    height: 20px;
+}
+
+#password-clean{
+    display: none;
+    width: 116px;
+    height: 20px;
+}
+/********************************************************** CAMBIOS EN EL FOOTER DEL SISTEMA *******************************************************************/
+#footer{
+    margin-top: 10px;
+    /*background: url(../../img/blanco-gris.jpg);*/
+/*    margin: 0 auto;*/
+}
+
+a#footer{
+    color: #511E59;/*#CE99C9; */
+}
+
+.copyright{
+    color: #929497;
+}
+
+/************************************************************ CAMBIOS EN EL HEADER DE PERFIL DE USUARIO ********************************************************/
+.header_profile{
+    background-color: #FFFFFF;/*531F5B;*/
+}
+
+.top_header{
+    margin-top: 40px;
+    margin-left: 25px;
+}
+
+a.links{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+div#bordes{
+	border:solid #CE99C9 1px;
+}
+
+#buscar_header{
+    margin-top: -5px;
+    background-color: #FFFFFF;
+    width: auto;
+}
+
+.defaultText{
+    width: 300px;
+}
+
+.defaultTextActive{
+    color: #a1a1a1;
+    font-style: italic;
+}
+
+.textFormLogin{
+    text-align: right;
+    vertical-align: middle;
+    color: #000000;
+}
+
+#titulos_busquedas{
+    color: #CE99C9;
+}
+
+.bgColor{
+    background: #ECD6E9;
+}
+/*************************************************** LETRAS DEL USUARIO REGISTRADO *****************************************************************/
+.titulosEP{
+    font-family: "Myriad"; 
+    color: #FFFFFF;
+    font-size: 14pt;
+    vertical-align: middle;
+}
+
+.fondosEP{
+    background: #8D6E98;
+}
+
+.letrasColor{
+    color: #4B0055;
+}
+
+/** letras de index **/
+.letraIndice{
+    color: #FFFFFF;
+}
+
+/* se usa este estilo para colocar el boton entrar del header */
+input#entrar{
+    background-image: url(../../img/boton_EntrarHome.png);/*url(../../img/entrar02.gif);*/
+    width: 62px;
+    height: 25px;
+}
+
+input#enter{
+    background-image: url(../../img/entrar.png);
+    width: 76px;
+    height: 28px;
+    border: none;
+}
+
+/** color de letra del header y submenu de los diversos perfiles **/
+.colorLetra{
+    color: #FFFFFF;
+}
+
+/** color de fondo del div derecho pára mostrar los pulzos **/
+.pulzosFondoDerecha{
+    background-color: #98789d;
+}
+
+/** COLOR DE FUENTES DE DIFERENTES COSAS **/
+.menu-izq{
+    color: #8D6E98;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.menu-izq-menor{
+    color: #8D6E98;
+    font-size: 9pt;
+    font-weight: normal;
+}
+
+.titulo-menu{
+    color: #339900;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.informacion-menu{
+    color: #7F7D7D;
+    font-size: 8pt;
+}
+
+.titulo-centro{
+    color:#8D6E98;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.titulo-centro-desc{
+    color: #9D6E98;
+    font-size: 12pt;
+    font-weight: normal;
+    text-justify: auto;
+}
+
+.titulos_formularios_internos{
+    color: #660066;
+    font-size: 11pt;
+}
+
+.formularios_internos{
+    color: #8F8F8F;
+    font-size: 9pt;
+}
+
+.texto-empresas{
+    color: #660066;
+    font-size: 9pt;
+}
+
+/** TITULO DE LAS LETRAS EN VISTA DE PULZOS **/
+.pulzos_titulo1{
+    color: #8D6E98;
+    font-weight: bold;
+}
+
+.pulzos_titulo3{
+    color: #339900;
+    font-weight: bold;
+}
+
+.pulzos_titulo2{
+    color: #8D6E98; 
+    font-weight: normal;
+}
+
+.pulzos_titulo4{
+    color: #339900;
+    font-weight: normal;
+}
+
+/** INTERLINEADO QUE SE LE DARA A LOS ESPACIOS DE TEXTO DE LA WEB **/
+div.interlineado{
+    line-height: 12px;
+}
+
+ul.interlineado{
+    line-height: 14px;
+}
+
+div.interlineado1{
+    line-height: 17px;
+}
+
+div.interlineado2{
+    line-height: 10px;
+}
+
+div.interlineado3{
+    line-height: 20px;
+}
+
+.interlineado3{
+    text-decoration: inline;
+}
+
+/**
+ * MARGEN DE LA PAGINA CUANDO NO SE INTRODUCE
+ * CORRECTAMENTE EL EMAIL O PASS
+ **/
+div#bordes-color{
+    border: 1px solid #B767AE;
+    position: relative;
+}
+
+#margen{
+    margin-left: 60px;
+	border:#B767AE solid 1px;
+}
+
+/** LINK PARA LA PARTE DE ERROR COLOR VERDE **/
+.link-verde{
+    text-decoration: none;
+    color: #D7DE40;
+}
+
+/** ESTILOS PARA LOS LINKS DE MI CIUDAD **/
+.pc{
+    color: #8D6E98;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.pc:active{
+    color: #FF0000;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.pc:hover{
+    color: #8D6E98;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.pc:visited{
+    color: #8D6E98;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+.enlace_miciudad{
+    text-decoration: none;
+    color: #8D6E98;
+    font-size: 11pt;
+}
+
+.sin-sub{
+    text-decoration: none;
+    color: #8D6E98;
+    font-size: 12px;
+}
+
+.sin-sub:hover{
+    text-decoration: none;
+    color: #8D6E98;
+    font-size: 12px;
+}
+
+/** PARTE DEL MENU DE LA DERECHA **/
+.experienciaNube{
+    text-decoration: none;
+    color: #969696;
+}
+
+.menu-derecha{
+    text-decoration: none;
+    color: #8F8F8F;
+}
+
+/** PARTE DE LA FOTO DONDE SE DEFINEN LAS CLASES **/
+.foto-medidas{
+    width: 160px;
+    height: auto !important;
+}
+
+/** BOTONES DE PUBLICACIONES **/
+.comment-submit{
+    background: url(../../img/publicar.png);
+    border: none;
+    width: 72px;
+    height: 20px;
+}
+
+.imagen{
+    background: url(../../img/publicar.png);
+}
+
+/**
+ * style for text when is explanation
+ **/
+.exp{
+    color: #8D6E98;
+    font-size: 12px;
+}
+
+#mapa_fondo{
+    background: url(../../img/fondo_mapa.png);
+    width: 253px;
+    height: 171px;
+}
+
+.imagen-boton-entrar{
+    background-image: url(../../img/entrar.png);
+    border: none;
+    width: 76px;
+    height: 28px;
+}
+
+#aceptarTransaccion{
+    background-image: url(../../img/boton_Aceptar.png);
+    border: none;
+    width: 62px;
+    height: 25px;
+}
+
+#rechazarTransaccion{
+    background-image: url(../../img/boton_Cancelar.png);
+    border: none;
+    width: 62px;
+    height: 25px;
+}

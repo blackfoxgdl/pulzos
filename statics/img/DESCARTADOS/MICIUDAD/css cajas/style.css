@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th { font-family:Arial, Helvetica, sans-serif; font-size:12px; color: #996699; }
+
+.cd01 { width:200px; height: 14px; border: 1px solid #996699; border-right: 0px; }
+.cd02 { position:relative; width:186px; height: 18px; margin-left:15px; margin-top:-22px; background-color:#FFF; }

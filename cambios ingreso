@@ -1,0 +1,71 @@
+<div class="container">
+        <div class="header">
+            <div class="span-4">
+                <div style="height:3px;"></div>
+                <?php echo anchor('usuarios',img(array('src'=>'statics/img/logo_index.png',
+                'border'=>'0'))); ?>
+                <?php echo img('statics/img/slogan_index.png'); ?>
+            </div>
+        </div>
+        <?php echo form_open('usuarios/login', array('id'=>'ingreso')); ?>
+        <div class="prepend-17 last" id="header_login_form">            
+            <?php echo form_input(array('name'=>'Ingreso[email]', 
+            'id'=>'emailI',
+            'value'=>set_value('Ingreso[email]', 'Email'),
+            )); ?>
+            <?php echo form_password(array('name'=>'Ingreso[password]',
+            'id'=>'passwordI',
+            'value'=>set_value('Ingreso[password]', 'Password'),
+            )); ?>
+            <?php echo form_submit(array('name'=>'submit',
+            'id'=>'ingreso',							 
+            'value'=>'')); ?>
+            <?php echo anchor('usuarios/olvidar', '¿Olvidaste la contraseña?', 
+            array('style'=>'color:#ffffff;text-decoration:none;', 'id'=>'olvidaste')); ?>
+        </div>
+        <?php echo form_close(); ?>
+    </div>
+</div>
+<div class="barra_index">
+</div>
+/***********************************************************************************************************
+<!-- header de usuario -->
+<div class="container"><!-- main -->
+    	<div class="header_profile">
+            <div class="prepend-1 span-1">
+            	<div style="height:3px;">
+                	&nbsp;
+            	</div>
+                <?php echo anchor('usuarios/',
+							img(array('src'=>'statics/img/logo_general.png',
+                                             'border'=>'0'))); ?>
+            </div>
+            <div class="prepend-1 span-4 last">
+            	<div class="span-4 last">
+                	&nbsp;
+            	</div>
+                <?php echo img('statics/img/slogan_general.png'); ?>
+            </div>
+            <div class="prepend-2 span-10 last" id="buscar">
+            	<div style="height:8px;"></div>
+            		<?php echo form_open('usuarios/busqueda'); ?>
+                    	<span style="vertical-align:top">
+                		<?php echo form_input(array('name'=>'buscar',
+													'id'=>'buscar',
+													'style'=>'height:18px;',
+													'dojoType'=>'dijit.form.ValidationTextBox',
+													'placeholder'=>'Buscar',
+													)); ?>
+                        </span>
+                        <span style="vertical-align:middle">
+                    	<?php echo form_submit(array('id'=>'buscar',
+													 'class'=>'buscar'
+													 )); ?>
+                        </span>
+                	<?php echo form_close(); ?>
+            </div>
+           </div>
+        </div>
+        <div class="barra">
+        </div>
+    </div><!-- main -->

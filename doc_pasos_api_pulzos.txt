@@ -1,0 +1,23 @@
+.- Se descarga el paquete que contiene la libreria de pulzos con la cual el comercio
+   se podra conectar a la plataforma y podra aceptar pagos por el mismo medio
+.- Se copia el archivo de la clase que se tiene una vez que se comprime el archivo
+   que contiene dentro del archivo zippeado y se coloca en la ruta de las librerias o en
+   alguna ruta que usted desee
+.- Se recibe la variable que se retorna al momento de redireccionar de vuleta al sitio
+   del comercio electronico donde el usuario hizo su compra y la transaccion
+.- Se tiene que realizar el llamado al archivo de la clase de pulzos para tener una
+   accesibilidad a los metodos de la clase y se pueda realizar la conexion
+.- Se crea una instancia de la clase, esto es crear un objeto mandando a llamar
+   el nombre de la clase que es "Pulzos" y se pasa en el constructor de la misma
+   el parametro que se capturo una vez que se regreso al comercio
+.- Despues de crear la instancia, se tiene que asignar una variable en la cual se recibiran
+   los parametros que se obtienen una vez que se haga el proceso de retorno de la clase de
+   pulzos
+.- Se tiene que asignar en esta variable la instancia creada con el llamado al metodo 
+   "getValue()" esto para que se retorne los valores en un arreglo asociativo los cuales
+   se podran manipular en forma de arreglo
+.- Se obtienen todos los valores en el arreglo asociativo y se podran manipular de la mejor
+   manera en la que el usuario lo desee. Estos valores contienen los siguientes parametros:
+   *No. de Transaccion
+   *Mensaje de Transaccion
+   *Total de Transaccion

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href='http://fonts.googleapis.com/css?family=Arimo:regular,bold' rel='stylesheet' type='text/css'>
+        <?php echo link_tag('statics/css/blueprint/screen.css'); ?>
+        <?php echo link_tag('statics/css/ext/index.css'); ?>
+        <?php echo link_tag('statics/js/jquery/jquery-ui/css/ui-lightness/jquery-ui-1.8.13.custom.css'); ?>
+        <?php echo link_tag('statics/css/ext/new_index.css'); ?>
+        <?php echo link_tag('statics/img/favicon.ico', 'shortcut icon', 'image/ico'); ?>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url().'statics/js/jquery/jquery-ui/js/jquery-ui-1.8.13.custom.min.js'; ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'statics/js/jquery/plugins/validate/jquery.validate.min.js'; ?>"></script>
+        <?php if(isset($included_file)): ?>
+        <?php foreach($included_file as $file): ?>
+        <script type="text/javascript" src="<?php echo base_url().$file; ?>"></script>
+        <?php endforeach; ?>
+        <?php endif; ?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                    $("#tabs").tabs();
+            });
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class='span-24 prepend-top'>
+            <div class="span-4 left-column">
+                <div class="avatar span-4 last">
+                    <?php echo img(array('src'=>base_url().'statics/img/maquetacion/dude.png')); ?>
+                    <ul id="pim">
+                        <li id='title-name'><strong>Daniel Sandoval</strong></li>
+                        <li>36 años</li>
+                        <li>Soltero</li>
+                        <li>Guadalajara, Jal</li>
+                    </ul>
+                </div>
+                <div class="span-4 last" id="pulzos-acumulados">
+                    <div class="soft-header"><strong>Pulzos Acumulados</strong></div>
+                    <p>50</p>
+                </div>
+                <div class="span-4 last" id="experto">
+                    <div class="soft-header">
+                        <strong>Experto</strong>
+                        <span class="right ver-todos-link"><a href="#">Ver todos</a></span>
+                    </div>
+                    <div class="span-1">
+                        <?php echo img(array(
+                        'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                        'width'=>'30',
+                        'height'=>'30',
+                        )); ?>
+                    </div>
+                    <div class="span-1">
+                        <?php echo img(array(
+                        'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                        'width'=>'30',
+                        'height'=>'30',
+                        )); ?>
+                    </div>
+                    <div class="span-1">
+                        <?php echo img(array(
+                        'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                        'width'=>'30',
+                        'height'=>'30',
+                        )); ?>
+                    </div>               
+                    <div class="span-1 last">
+                        <?php echo img(array(
+                        'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                        'width'=>'30',
+                        'height'=>'30',
+                        )); ?>
+                    </div>
+                </div>
+                <div class="span-4 last" id="mapa-pulzos">
+                    <div class="soft-header"><strong>Pulzos de la Ciudad</strong></div>
+                    <input type="text" name="mapas" value="mapas" id="ciudad-search"/>
+                    <?php echo img(array('src'=>base_url().'statics/img/maquetacion/map.png')); ?>
+                </div>
+            </div>
+        <div class="span-14">
+            <div class="span-14 last center-column" id="tabs">
+                
+                <ul>
+                    <li><a href="#tab-1">¿Que hay que hacer hoy?</a></li>
+                    <li><a href="#tab-2">Mis Eventos</a></li>
+                    <li><a href="#tab-3">Eventos de Amigos</a></li>
+                </ul>
+                <div id="tab-1" class="span-14 last">
+                    <div class="span-14 last prepend-top plan-element">
+                        <div class="span-2">
+                            <?php echo img(array(
+                            'src'=>base_url().'statics/img/maquetacion/santo_coyote.png', 
+                            'width'=>'70', 
+                            'height'=>'70')); ?>
+                        </div>
+                        <div class="span-11 last">
+                            <h3 class="title-name">Super Salads</h3>
+                            <p>
+                                ¿Te tocó organizar la comida? Te ofrecemos un 10% de descuento en el consumo de 5 o más personas
+                            </p>
+                        </div>
+                        <div class="span-14 last">
+                            <ul class="sub-menu right">
+                                <li><a href="#">Reservar</a></li>
+                                <li><a href="#">Recomendar</a></li>
+                            </ul>
+                        </div>
+                    <hr />
+                    </div>
+                    <div class="span-14 last prepend-top plan-element">
+                        <div class="span-2">
+                            <?php echo img(array(
+                            'src'=>base_url().'statics/img/maquetacion/santo_coyote.png', 
+                            'width'=>'70', 
+                            'height'=>'70')); ?>
+                        </div>
+                        <div class="span-11 last">
+                            <h3 class="title-name">Super Salads</h3>
+                            <p>
+                                ¿Te tocó organizar la comida? Te ofrecemos un 10% de descuento en el consumo de 5 o más personas
+                            </p>
+                        </div>
+                        <div class="span-14 last">
+                            <ul class="sub-menu right">
+                                <li><a href="#">Reservar</a></li>
+                                <li><a href="#">Recomendar</a></li>
+                            </ul>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="span-14 last prepend-top plan-element">
+                        <div class="span-2">
+                            <?php echo img(array(
+                            'src'=>base_url().'statics/img/maquetacion/santo_coyote.png', 
+                            'width'=>'70', 
+                            'height'=>'70')); ?>
+                        </div>
+                        <div class="span-11 last">
+                            <h3 class="title-name">Super Salads</h3>
+                            <p>
+                                ¿Te tocó organizar la comida? Te ofrecemos un 10% de descuento en el consumo de 5 o más personas
+                            </p>
+                        </div>
+                        <div class="span-14 last">
+                            <ul class="sub-menu right">
+                                <li><a href="#">Reservar</a></li>
+                                <li><a href="#">Recomendar</a></li>
+                            </ul>
+                        </div>
+                    <hr />
+                    </div>
+                </div>
+                <div id="tab-2" class="span-14 last">
+                    Hola!!
+                </div>
+                <div id="tab-3" class="span-14 last">Hola 2</div>
+            </div>
+        </div>
+        <div class="span-6 last right-column">
+            <div class="span-6 last right-element">
+                <div class="soft-header"><strong>Tus eventos próximos</strong><span class="ver-todos-link right"><a href="#">Ver todos</a></span></div>
+                <div class="right-indicator span-6 last">
+                    <div class="span-2">
+                        <?php echo img(array('src'=>base_url().'statics/img/maquetacion/santo_coyote.png', 'width'=>'70', 'height'=>'70')); ?>
+                   </div>                
+                   <div class="span-4 last">
+                        <h3 class="title-name">Super Salads</h3>
+                        <p>Reunión ex-compañeros de la universidad</p>
+                        <p>
+                        Sabado 7 de Mayo 2001<br />
+                        13:00hrs
+                        </p>
+                   </div>
+                </div>
+            </div>
+            <div class="span-6 last right-element">
+                <div class="soft-header"><strong>Pulzos que sigues</strong><span class="ver-todos-link right"><a href="#">Ver todos</a></span></div>
+                <div class="right-indicator span-6 last">
+                    <div class="span-2">
+                        <?php echo img(array('src'=>base_url().'statics/img/maquetacion/santo_coyote.png', 'width'=>'70', 'height'=>'70')); ?>
+                   </div>                
+                   <div class="span-4 last">
+                        <h3 class="title-name">Super Salads</h3>
+                        <p>Trae este 10 de mayo y celebra a tu mamá. Nosotros ponemos el postre</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

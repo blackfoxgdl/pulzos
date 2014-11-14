@@ -1,0 +1,192 @@
+** ALTER TABLE `negocios` ADD `negocioSubgiro` INT NULL DEFAULT '0' COMMENT 'Se usa para definir la subcategoria del negocio' AFTER `negocioGiro` 
+** ALTER TABLE `negocios` ADD `negocioPrimerIngreso` INT NULL DEFAULT '1' COMMENT 'Saber si el negocio ya ingreso mas de una vez. 1 - no ha ingresado ninguna vez, 0 - mas de un ingreso' AFTER `negocioImagenId` 
+
+
+
+**ALTER TABLE  `planesusuarios` ADD  `planVirtual` VARCHAR( 20 ) NOT NULL DEFAULT  '0' AFTER  `planEmpresaPulzoId`
+
+
+**ALTER TABLE `invitacionpersonal` ADD `invitacionPersonalPlanReservacion` INT NULL DEFAULT '0' COMMENT 'Campo que se usara para poder realizar o saber si han reservado en un plan o no' AFTER `invitacionPersonalStatus` 
+** ALTER TABLE `pulzos` ADD `pulzoCategoria` INT NOT NULL AFTER `pulzoSubcategoria` 
+
+**ALTER TABLE `altanegocio` ADD `altaNegocioDescripcion` VARCHAR( 400 ) NULL AFTER `altaNegocioDireccion` 
+
+**ALTER TABLE `usuarios` ADD `statusIngreso` INT NULL DEFAULT '1' COMMENT 'Se muestra el status del usuario si ya entro por primera vez o no 1.- no ha ingresado ninguna vez, 0.- ya ingreso' AFTER `statusRecuperacion`
+
+
+
+**CREATE TABLE `pulzos_bueno`.`scribbles_comments` (
+`scribbleId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`scribbleUsuarioId` INT NOT NULL ,
+`scribbleTexto` VARCHAR( 150 ) NOT NULL ,
+`scribbleLat` DECIMAL( 10, 8 ) NOT NULL ,
+`scribbleLng` DECIMAL( 10, 8 ) NOT NULL ,
+`scribbleFatherId` INT NULL DEFAULT '0'
+) ENGINE = InnoDB;
+
+**INSERT INTO `pulzos_bueno`.`subcategorias` (
+`id` ,
+`nombre` ,
+`idGiro`
+)
+VALUES (
+'149', 'Aves', '14'
+);
+
+
+
+** ALTER TABLE `scribbles_comments` ADD `scribbleNombreUsuario` VARCHAR( 400 ) NOT NULL AFTER `scribbleLng` ,
+ADD `scribbleImagenUsuario` VARCHAR( 400 ) NOT NULL AFTER `scribbleNombreUsuario`
+
+
+**ALTER TABLE `scribbles_comments` ADD `totalComentarios` INT NULL DEFAULT '0'
+
+
+**ALTER TABLE `scribbles_comments` ADD `heading` FLOAT NOT NULL ,
+ADD `altura` FLOAT NOT NULL 
+
+
+**ALTER TABLE `planesusuarios` ADD `planScribbleId` INT NULL DEFAULT '0'
+
+**ALTER TABLE `scribbles_comments` ADD `atributo` INT NULL DEFAULT '0'
+
+**ALTER TABLE `social_media` CHANGE `socialId` `socialId` INT( 11 ) NOT NULL AUTO_INCREMENT 
+
+**ALTER TABLE `ofertas_negocios` ADD `idMensajeOferta` INT NOT NULL COMMENT 'Dato que se identifica con la tabla de social media'
+**ALTER TABLE `ofertas_negocios` ADD `ofertaActivacion` TINYINT( 1 ) NOT NULL 
+**ALTER TABLE `ofertas_negocios` CHANGE `ofertaActivacion` `ofertaActivacion` TINYINT( 1 ) NULL DEFAULT '0'
+**ALTER TABLE `negocios` CHANGE `negocioNombre` `negocioNombre` VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL 
+
+**ALTER TABLE `scribbles_comments` CHANGE `scribbleLng` `scribbleLng` VARCHAR( 20 ) NOT NULL 
+**ALTER TABLE `scribbles_comments` CHANGE `scribbleLat` `scribbleLat` VARCHAR( 20 ) NOT NULL 
+
+**ALTER TABLE `ofertas_negocios` CHANGE `ofertaActivacion` `ofertaActivacion` TINYINT( 1 ) NULL DEFAULT '0' COMMENT '0.- Oferta no activa, 1.- Oferta activa, 2.- Oferta eliminada'
+
+
+**ALTER TABLE `money_usuario` ADD `usuarioMoneyStatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0.-Pendiente, 1.-Aceptado, 2.-Rechazado'
+**ALTER TABLE `money_usuario` ADD `usuariosMoneyBackId` INT NOT NULL 
+**ALTER TABLE `social_media_empresa` ADD `mensajePulzos` VARCHAR( 400 ) NOT NULL AFTER `mensajeTwitter`
+
+
+**ALTER TABLE `inboxn` ADD `inboxnMoneyUser` INT NOT NULL ,
+ADD `inboxnOfertaId` INT NOT NULL ,
+ADD `inboxnMoneyStatus` TINYINT( 2 ) NOT NULL 
+
+**ALTER TABLE `inboxn` CHANGE `inboxnMoneyStatus` `inboxnMoneyStatus` TINYINT( 2 ) NOT NULL COMMENT '0.-rechazado, 1.- Aceptado, 2.-Pendiente'
+
+**ALTER TABLE `comisionRecibida` ADD `comisionRecibidaFechaTransaccion` INT NOT NULL 
+
+**ALTER TABLE `pulzos` CHANGE `pulzoCategoria` `pulzoCategoria` VARCHAR( 200 ) NULL DEFAULT '0',
+CHANGE `pulzoSubcategoria` `pulzoSubcategoria` VARCHAR( 200 ) NULL DEFAULT '0'
+
+**ALTER TABLE `social_media` CHANGE `uidFacebook` `uidFacebook` VARCHAR( 400 ) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '0',
+CHANGE `tokenFacebook` `tokenFacebook` VARCHAR( 400 ) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '0',
+CHANGE `twitter_oauth` `twitter_oauth` VARCHAR( 400 ) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '0',
+CHANGE `twitter_oauth_secret` `twitter_oauth_secret` VARCHAR( 400 ) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '0'
+
+**CREATE TABLE `pulzos_bueno`.`pasar_voz` (
+`pasarVozId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`pasarVozScribbleId` INT NOT NULL ,
+`pasarVozUsuarioId` INT NOT NULL ,
+`pasarVozCode` INT NOT NULL ,
+`pasarVozTotal` INT NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin;
+**ALTER TABLE `pasar_voz` DROP `pasarVozTotal` 
+
+**CREATE TABLE `pulzos_bueno`.`tagging_promotions` (
+`taggingId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`taggingPromotionId` INT NOT NULL ,
+`taggingFinishPromotion` INT NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'Tabla para guardar las promociones limitadas del negocio';
+
+**ALTER TABLE `scribbles_comments` ADD `scribbleAnexos` VARCHAR( 400 ) NOT NULL DEFAULT '0'
+**update `usuarios` set `pais`=42 WHERE `pais`=1
+
+** CREATE TABLE `pulzos_bueno`.`geotag_oferta` (
+`geotagofertaId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`geotagGId` INT NOT NULL ,
+`ofertaOId` INT NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'Tabla donde se guardaran los datos de los tagging relacionados con las ofertas';
+**ALTER TABLE `historialDeposito` CHANGE `historialCodigo` `historialCodigo` VARCHAR( 400 ) NOT NULL
+**ALTER TABLE `scribbles_comments` ADD `scribbleStatus` INT NOT NULL DEFAULT '1' COMMENT 'Status de empresas para activar o desactivar 1.- Activo 2.- Desactivo'
+
+**CREATE TABLE `pulzos_bueno`.`bitacora_uno` (
+`bitacoraId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`bitacoraIbxnId` INT NOT NULL ,
+`bitacoraUsuarioRecibeId` INT NOT NULL ,
+`bitacoraUsuarioEnviaId` INT NOT NULL ,
+`bitacoraIbxMsj` VARCHAR( 200 ) NOT NULL ,
+`bitacoraIbxOferta` INT NOT NULL ,
+`bitacoraMoneyUsuario` INT NOT NULL ,
+`bitacoraIbxStatus` INT NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'Bitacora para conocer los mensajes que postea el usuario en solicitud de bonifi';
+**ALTER TABLE `bitacora_uno` CHANGE `bitacoraIbxnId` `bitacoraIbxnId` INT( 11 ) NOT NULL COMMENT 'id del inbox pra la bitacora',
+CHANGE `bitacoraUsuarioRecibeId` `bitacoraUsuarioRecibeId` INT( 11 ) NOT NULL COMMENT 'id del usuario que recibe para la bitacora',
+CHANGE `bitacoraUsuarioEnviaId` `bitacoraUsuarioEnviaId` INT( 11 ) NOT NULL COMMENT 'id del usuario que envia para la bitacora',
+CHANGE `bitacoraIbxMsj` `bitacoraIbxMsj` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'mensaje de bonificacion para la bitacora',
+CHANGE `bitacoraIbxOferta` `bitacoraIbxOferta` INT( 11 ) NOT NULL COMMENT 'id de oferta de la promocion para la bitacora',
+CHANGE `bitacoraMoneyUsuario` `bitacoraMoneyUsuario` INT( 11 ) NOT NULL COMMENT 'id del usuario para el money back en bitacora',
+CHANGE `bitacoraIbxStatus` `bitacoraIbxStatus` INT( 11 ) NOT NULL COMMENT 'status del inbox en la bitacora'
+**CREATE TABLE `pulzos_bueno`.`bitacora_dos` (
+`bitacoraDosId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id de la bitacora dos',
+`bitacoraDosUsuarioAcepta` INT NOT NULL COMMENT 'id del usuario que acepta que publiquen el mensaje',
+`bitacoraDosUsuarioPublica` INT NOT NULL COMMENT 'Id del usuario que publica su msj',
+`bitacoraDosMsjFb` VARCHAR( 300 ) NULL COMMENT 'Mensaje a publicar en fb para bitacora',
+`bitacoraDosMsjTw` VARCHAR( 300 ) NULL COMMENT 'Mensaje de TW para bitacora',
+`bitacoraDosOfertaId` INT NOT NULL COMMENT 'id de la oferta aceptada para bitacora',
+`bitacoraDosMoneyUsuario` INT NOT NULL COMMENT 'id del meny back del usuario para bitacora',
+`bitacoraDosBitacoraUno` INT NOT NULL COMMENT 'id de bitacora uno'
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'Bitacora para conocer los datos de los usuarios cuando aceptan la bonificacion'; 
+
+
+/** cambios tabla ofertasnegocios
+**ALTER TABLE `ofertas_negocios` ADD `statusTipoBonificacion` INT NOT NULL COMMENT 'Status del tipo de promocion que se hara, fija o porcentaje 5-fijo 6-porcentaje'
+**ALTER TABLE `ofertas_negocios` ADD `idPlanUsuarioOfertaNegocio` INT NOT NULL COMMENT 'id del plan que se crea cuando el negocio realiza una oferta o da de alta una oferta'
+**ALTER TABLE `ofertas_negocios` CHANGE `idPlanUsuarioOfertaNegocio` `idPlanUsuarioOfertaNegocio` INT( 11 ) NULL DEFAULT '0' COMMENT 'id del plan que se crea cuando el negocio realiza una oferta o da de alta una oferta'
+
+/** TABLA USUARIOS **/
+**ALTER TABLE `usuarios` CHANGE `email` `email` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+
+**ALTER TABLE `money_back` ADD `moneyBackOfertaId` INT NOT NULL
+
+/** TABLA DE COMISIONES **/
+ALTER TABLE `comisionRecibida` ADD `fechaDepositoComisionUsuario` VARCHAR( 50 ) NULL DEFAULT '0'
+
+/** TABLA DE TRASNFERENCIAS_USUARIOS MODIFICACIONES **/
+ALTER TABLE `tranferencias_usuarios` ADD `transferenciaNombreCompleto` VARCHAR( 200 ) NOT NULL AFTER `idUsuarioTransferenciaUsuario` ,
+ADD `transferenciaApellidoPaterno` VARCHAR( 200 ) NOT NULL AFTER `transferenciaNombreCompleto` ,
+ADD `transferenciaApellidoMaterno` VARCHAR( 200 ) NOT NULL AFTER `transferenciaApellidoPaterno` 
+
+/** TABLA DE LOS RETIROS DE USUARIOS **/
+ALTER TABLE `retiros` ADD `porcentajeRetiroComision` DOUBLE NOT NULL AFTER `retiroFecha` 
+
+/** TABLA DE LAS TRANSACCIONES PAGADAS **/
+ALTER TABLE `transacciones_pagadas` ADD `statusPagoNegocio` INT NOT NULL DEFAULT '0' AFTER `transaccionCompletaId`
+
+/** NUEVOS CAMBIOS 21 DE FEBRERO **/
+ALTER TABLE `historialDeposito` ADD `historialDepositoReferencia` VARCHAR( 400 ) NOT NULL DEFAULT '0'
+
+/** AGREGAR TABLA BONIFICACIONES_IE **/
+CREATE TABLE `pulzos_bueno`.`bonificaciones_ie` (
+`bonificacionIe` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`bonificacionIeUsuario` INT NOT NULL ,
+`bonificacionIePlan` INT NOT NULL ,
+`bonificacionIeFolioFactura` VARCHAR( 500 ) NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'bonificaciones para parchar la parte de internet explorer que no actualiza cache';
+
+/** AGREGAR ESTA TABLA DE TAGS DE FOTOS Y VIDEOS **/
+CREATE TABLE `pulzos_bueno`.`geo_pictures` (
+`geoPictureId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`geoPictureIdTag` INT NOT NULL ,
+`geoPictureImgNormal` VARCHAR( 400 ) NOT NULL ,
+`geoPictureImgThumb` VARCHAR( 400 ) NOT NULL
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_bin COMMENT = 'Tabla para guardar las imagenes o videos que se pondran en geoetiquetas';
+
+
+/** CAMBIO A LA TABLA DE OFERTAS_NEGOCIOS **/
+ALTER TABLE `ofertas_negocios` ADD `statusIva` INT NOT NULL COMMENT 'se conoce si se desglosa el iva o no 1 si 2 no y 3 ni uno ni otro'
+
+
+/** AGREGAR OTRO REGISTRO A LA TABLA SUBCATEGORIAS PARA FIESTA LOCAL **/
+INSERT INTO `pulzos_bueno`.`subcategorias` (`id` ,`nombre` ,`idGiro`)VALUES (150, 'Fiesta Local', '10');
+

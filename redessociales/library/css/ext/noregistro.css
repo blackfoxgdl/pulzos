@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+/* CSS que cargara el cuerpo de la parte de no registro */
+#frontend{
+    background: url(../../img/main_top.png) no-repeat;
+    background-color: #9E3495;
+    width: auto;
+    height: 450px;/*384px;*/
+}
+
+.espaciado{
+    padding-bottom: 15px;
+}

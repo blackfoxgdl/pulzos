@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+/* BORDE DE REDONDEO DEL MENU DE LA DERECHA */
+
+.redondeo-menu{
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+}
+
+.redondeo-titulo{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -ms-border-radius-topleft: 5px;
+    -ms-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -khtml-border-radius-topleft: 5px;
+    -khtml-border-radius-topright: 5px;
+}
+
+.redondeo-div-inferior{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -ms-border-radius-bottomleft: 10px;
+    -ms-border-radius-bottomright: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -khtml-border-radius-bottomleft: 10px;
+    -khtml-border-radius-bottomright: 10px;
+}
+
+.redondeo-code-box{
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+}

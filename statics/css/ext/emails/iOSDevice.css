@@ -1,0 +1,27 @@
+#cabeza_movil
+{
+    background-image: url('http://www.pulzos.com/statics/img/mailPulzosCabeceraMovil.jpg');
+    background-repeat: no-repeat;
+    width: 320px;
+    height: 100px;
+    margin:auto;
+}
+
+#cabeza_desktop
+{ 
+    display:none;
+}
+
+#pie_movil
+{ 
+    background-image: url('http://www.pulzos.com/statics/img/mailPulzosPieMovil.jpg');
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 320px;
+    margin:auto;
+}
+
+#pie_desktop
+{
+    display:none;
+}

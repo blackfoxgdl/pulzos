@@ -1,0 +1,10 @@
+/*@media screen and (max-device-width: 481px) {#cabeza_movil { width: 0px; }}
+@media screen and (max-device-width: 481px) {#pie_movil { width: 0px; }}*/
+
+#cabeza_movil{
+    width: 0px;
+}
+
+#pie_movil{
+    width: 0px;
+}

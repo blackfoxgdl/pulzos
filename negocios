@@ -1,0 +1,304 @@
+<div class="span-24"><!-- PRINCIPAL ** INICIO ** -->
+    <div style="display: none">
+        <?php echo img(array('id'=>'imagen',
+                             'src'=>'statics/img/pin.png')); ?>
+        <span class="latitud"><?php echo $negocios->negocioLatitud; ?></span>
+        <span class="longitud"><?php echo $negocios->negocioLongitud; ?></span>
+        <span class="negocioNombre"><?php echo $negocios->negocioNombre; ?></span>
+        <span class="negocioDireccion"><?php echo $negocios->negocioDireccion; ?></span>
+    </div>
+    <div class="span-4 left-column" style="margin-top: 8px;"><!-- DIV IZQUIERDA ** INICIO ** -->
+        <div class="avatar span-4 last"><!-- DIV DEL PERFIL -->
+            <?php if($this->session->userdata('id') == $negocios->negocioUsuarioId): ?>
+                <div class="notification-block">
+                    <?php echo anchor('imagennegocios/cambiar_avatar_negocio/', 'Cambiar Avatar', array('class'=>'middle-menu-link'))?>
+                </div>
+                <?php echo anchor('imagennegocios/cambiar_avatar_negocio/',
+                                img(array('src'=>get_avatar_negocios($negocios->negocioId), 
+                                          'width'=>'140', 
+                                          'height'=>'140', 
+                                          'id'=>'avatar-photo-block')), 
+                                    array('class'=>'middle-menu-link', )); 
+                ?>
+            <?php else: ?>
+                <?php echo img(array('src'=>get_avatar_negocios($negocios->negocioId),
+                                      'width'=>'140',
+                                      'height'=>'140',
+                                      'id'=>'avatar-photo-block')); 
+            ?>
+            <?php endif; ?>	
+            <ul id="pim" class="interlineado">
+                <li class="title-name" id="pim-nombre">
+                    <!-- strong -->
+                    <span class="menu-izq" id="nombrePim">
+                        <?php if($this->session->userdata('id') == $negocios->negocioUsuarioId): ?>
+                            <?php echo anchor('negocios/editar/'.$negocios->negocioId,
+                                              $negocios->negocioNombre,
+                                              array('class'=>'nombreNegocio','id'=>'negocioNombreId', 'style'=>'text-decoration: none; color: #8D6E98'));
+                        ?>
+                        <?php else: ?>
+                            <?php echo $negocios->negocioNombre; ?>
+                        <?php endif; ?>
+                    </span>
+                    <span class="menu-izq-menor">
+                        <br />
+                        <span id="giroN">
+                            <?php echo get_giro_negocio($negocios->negocioGiro); ?>
+                        </span>
+                        <br />
+                        <span id="negocioD">
+                            <?php echo $negocios->negocioDireccion; ?>
+                        </span>
+                        <br />
+                        <span id="negocioT">
+                            <?php echo $negocios->negocioTelefono; ?>
+                        </span>
+                        <br />
+                        <?php if($this->session->userdata('idN') != $negocios->negocioId): ?>
+                            <?php if($numeroSeguidor == 0): ?>
+                                <?php echo anchor('seguidores/seguir/'.$negocios->negocioId, 
+                                'Seguir Negocio', array('id'=>'seguirEmpresa', 'class'=>'seguirE')); ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </span>
+                    <!-- /strong -->
+                </li>
+            </ul>
+        </div><!-- ESTE DIV ES DEL PERFIL -->
+        <div class="span-4 last" id="experiencias"><!-- DIV DE PULZOS A DAR DEL NEGOCIO -->
+<!--            <div class="soft-header">
+                <strong>
+                    Pulzos a dar
+                </strong>
+            </div>
+            <p>50</p>-->
+        </div><!-- DIV DE PULZOS A DAR DEL NEGOCIO -->
+        <div class="span-4 last" id="experto">
+             <?php /* <div class="soft-header">
+                <strong>Expertos</strong>
+                <span class="right ver-todo-link"><a href="#" class="links">Ver Todos</a></span>
+            </div>
+            <div class="span-4 last" style="margin-top: 5px"></div>
+            <div class="span-1">
+                <?php echo img(array(
+                    'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                    'width'=>'30',
+                    'height'=>'30',
+                )); ?>
+            </div>
+            <div class="span-1">
+                <?php echo img(array(
+                    'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                    'width'=>'30',
+                    'height'=>'30',
+                )); ?>
+            </div>
+            <div class="span-1">
+                <?php echo img(array(
+                    'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                    'width'=>'30',
+                    'height'=>'30',
+                )); ?>
+            </div>               
+            <div class="span-1 last">
+                <?php echo img(array(
+                    'src'=>base_url().'statics/img/maquetacion/santo_coyote.png',
+                    'width'=>'30',
+                    'height'=>'30',
+                )); ?>
+            </div> 
+          
+        </div>
+        <div class="span-4 last"><!-- muestra seguidores -->
+            <div class="soft-header">
+                <strong>
+                    Seguidores
+                </strong>
+                <span class="right ver-todo-link" id="seguidores">
+                    <?php echo anchor('seguidores/ver/'.$negocios->negocioId,
+                                      'Ver Todos', array('class'=>'links', 'id'=>'seguidor-negocios')); ?>
+                </span>
+            </div>
+            <div class="span-4 last" style="margin-top: 5px">
+                <?php $seg = get_followers_company($negocios->negocioId); ?>
+                <?php if($seg != ""): ?>
+                    <?php foreach($seg as $seguidor): ?>
+                        <div class="span-1 last">
+                            <?php echo img(array('src'=>get_avatar($seguidor->seguidorUsuarioId),
+                                                 'width'=>'30',
+                                                 'height'=>'30')); ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <?php echo "No hay seguidores"; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="span-4 last">
+            <div class="soft-header">
+                <strong>
+                    Ubicacion
+                </strong>
+            </div>
+            <div class="span-4 last" style="margin-top: 5px"></div>
+            <?php //echo form_dropdown('ciudad', array('1'=>'Guadalajara')); ?>
+            <div class="span-4 last" style="margin-top: 5px;"></div>
+            <div id="mapa-pulzos" rel="#maping-overlay"></div>
+        </div>
+    </div><!-- DIV IZQUIERDA ** FIN ** --> 
+    <div class="span-14" id="texto-menu"><!-- texto-menu para poder hacer dinamico el centro -->
+    <div class="span-14 center-column last" style="margin-top: 8px;"><!-- DIV CENTRO ** FIN ** -->
+        <div class="span-14" style="margin-left: 10px;">
+            <div class="span-12">
+                <?php if($this->session->userdata('id') == $negocios->negocioUsuarioId): ?>
+                    <div class="banner-block">
+                        <?php echo anchor('negocios/banner_negocio/'.$negocios->negocioId,
+                                          'Cambiar tu Banner', array('class'=>'bannersNegocios')); ?>
+                    </div>
+                    <?php echo anchor('negocios/banner_negocio/'.$negocios->negocioId,
+                                        img(array('src'=>get_banner_company($negocios->negocioId))),
+                                        array('id'=>'bannerPrincipal','class'=>'bannersNegocios')); ?>
+                <?php else: ?>
+                    <?php echo img(array('src'=>get_banner_company($negocios->negocioId),
+                                         'id'=>'bannerPrincipal',
+                                         'class'=>'bannersNegocios')); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="span-14" style="margin-left: 10px">
+            <div class="span-12">
+               
+            </div>
+        </div>
+        <div class="span-14" style="margin-top: 25px;">
+            <div class="span-12">
+                <div class="interlineado1 span-12" style="margin-left: 20px;">
+                    <span class="titulo-centro">Descripcion:</span>
+                    <span class="titulo-centro-desc"><?php echo $negocios->negocioDescripcion; ?></span>
+                  <!--  Direcci&oacute;n
+                    <br />
+                    Tel&eacute;fono
+                    <br />
+                    Horario
+                </div>
+                <div class="span-9 last" style="margin-left: -5px">
+                    < ?php echo $negocios->negocioDireccion; ?>
+                    <br />
+                    < ?php echo $negocios->negocioTelefono; ?>
+                    <br />
+                    < ?php echo $negocios->negocioHorario; ?>
+                    <div style="float: right; margin-right: -60px">
+                        < ?php echo anchor('', 'Enviar un Mensaje'); ?>
+                    </div-->
+                </div>
+            </div>
+        </div>
+        <div class="span-13 last" style="margin-top: 20px; margin-left: 10px;">            
+            <?php echo anchor('negocios/get_pulzos_nuevos/'.$negocios->negocioId,
+                     '',
+                     array('class'=>'returnP','id'=>'return','style'=>'display:none')); ?>
+            <?php /* if($this->session->userdata('id') == $negocios->negocioUsuarioId): ?>
+                <div class="soft-header" style="margin-right: 30px; margin-bottom: 15px;">
+                    Pulza tu Evento
+                </div> 
+                <?php echo form_open_multipart('negocios/guardar_pulzo/'.$negocios->negocioId, array('id'=>'pulzosForm','class'=>'formaPulzar')); ?>
+                    <div class="span-3">
+                        <?php echo form_label('Titulo:','tituloPulzo'); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php echo form_input(array('id'=>'tituloPulzos',
+                                                    'name'=>'Pulzos[pulzoTitulo]',
+                                                    'class'=>'',
+                                                    'value'=>'')); ?>
+                    </div>
+                    <div class="span-3">
+                        <?php echo form_label('Inicia:','fechaInicio'); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php $diaFI = 'id="diaInicio",
+                                      class="diaIni"';   
+                            echo form_dropdown('Pulzos[dia]',$dias,'',$diaFI); ?>
+                        <?php $mesFI = 'id="mesInicio",
+                                        class="mesIni"';
+                              echo form_dropdown('Pulzos[mes]',$meses,'',$mesFI); ?>
+                        <?php /*$anoFI = 'id="anoInicio",
+                                        class="anoIni"';
+                                echo form_dropdown('Pulzos[ano]',$years,'',$anoFI);*//* ?>
+                    </div>
+                    <div class="span-3">
+                        <?php echo form_label('Termina:','fechaFin'); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php $diaFF = 'id="diaFinal",
+                                        class="diaFin"';
+                              echo form_dropdown('Pulzos[diaT]',$dias,'',$diaFF); ?>
+                        <?php $mesFF = 'id="mesFinal",
+                                        class="mesFin"';
+                              echo form_dropdown('Pulzos[mesT]',$meses,'',$mesFF); ?>
+                        <?php /*$anoFF = 'id="anoFinal",
+                                        class="anoFin"';
+                            echo form_dropdown('Pulzos[anoT]',$years,'',$anoFF);*//* ?>
+                    </div> 
+                    <!-- div class="span-2">
+                        < ?php echo form_label('Hora:','hora'); ?>
+                    </div>
+                    <div class="prepend-1">
+                        < ?php echo form_input(array('id'=>'hora',
+                                                    'name'=>'Pulzos[pulzoHora]',
+                                                    'class'=>'')); ?>
+                    </div -->
+                    <div class="span-3">
+                        <?php echo form_label('Descripcion:','promo'); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php echo form_textarea(array('id'=>'comment',
+                                                       'name'=>'Pulzos[pulzoAccion]',
+                                                       'class'=>'',
+                                                       'cols'=>'30',
+                                                       'rows'=>'5'));/*form_input(array('id'=>'comment',
+                                                    'name'=>'Pulzos[pulzoAccion]',
+                                                    'class'=>''));*//* ?>
+                    </div>
+                    <div class="span-3">
+                        <?php echo form_label("Aviso Legal:","aviso"); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php echo form_textarea(array('id'=>'pulzoLegal',
+                                                       'class'=>'',
+                                                       'name'=>'Pulzos[pulzoAvisoLegal]',
+                                                       'cols'=>'30',
+                                                       'rows'=>'5')); ?>
+                    </div>
+                    <div class="span-3">
+                        <?php echo form_label('Tipo de Comunicacion:','tipoComunicacion'); ?>
+                    </div>
+                    <div class="span-10 last">
+                    k enton
+                        <?php echo form_radio('Pulzos[pulzoTipoComunicacion]', '1', TRUE); ?>Privada
+                        <br />
+                        <?php echo form_radio('Pulzos[pulzoTipoComunicacion]', '2', FALSE); ?>Publica
+                        <br />
+                        <?php echo form_radio('Pulzos[pulzoTipoComunicacion]', '3', FALSE); ?>Nacional
+                    </div>
+                    <div class="span-3">
+                        <?php echo form_label('Imagen del Evento:','imagenPulzo'); ?>
+                    </div>
+                    <div class="span-10 last">
+                        <?php echo form_upload(array('id'=>'imagenPulzo',
+                                                     'name'=>'imagenP',
+                                                     'value'=>'')); ?>
+                    </div>
+                    <?php echo form_submit(array('id'=>'pulzarPulzo',
+                                                 'value'=>'Pulzar',
+                                                 'name'=>'pulzarButton')); ?>
+                <?php echo form_close(); ?>
+            <?php endif;
+        </div>
+      </div><!-- div de texto-menu -->
+    </div><!-- DIV CENTRO ** FIN ** -->
+    <div class="span-6 last pulzosFondoDerecha" id="pulzos_hecho"><!-- DIV DERECHA ** INICIO ** -->
+        <div class="span-5 last" style="margin-top: 25px">
+        </div>
+    </div><!-- DIV DERECHA ** FIN ** -->
+    <div id="maping-overlay" class="kewl-overlay-style"><div id="show-map"></div></div>
+    </div><!-- DIV PRINCIPAL ** FIN ** --> */ ?>

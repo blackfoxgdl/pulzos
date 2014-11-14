@@ -1,0 +1,7 @@
+new_index.css (YA)
+
+*money/
+busqueda_negocio.php (YA)
+busqueda_oferta.php (YA)
+->controlador (YA)
+->modelo (YA)

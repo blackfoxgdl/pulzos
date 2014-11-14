@@ -1,0 +1,391 @@
+.header{
+    background-color: #4B0055;
+    color: #BE8898;
+}
+
+#header-container{
+    background-color: #660068;/*65366C;*/
+    color: #BE8898;
+    height: 20px;
+}
+
+#header-sub-menu{
+    background-color: #65366C;
+    color: #BE8898;
+    width: 950px;
+    height: 21px;
+    margin: 0px auto 0px 133px;
+}
+.notifi1{
+	position:relative;
+	background:url(../../img/notifi1.png) no-repeat;
+	width:20px;
+	height:20px;
+	font-size:10px;
+	}
+	
+	.notifi2{
+		position:relative;
+	background:url(../../img/notifi2.png) no-repeat;
+	width:20px;
+	height:20px;
+	font-size:10px;
+	}
+	
+#site-map{
+    display: none;
+}
+
+.notification-block{
+    display: none;
+    background-color: #BAA7BD;
+    color: #FFFFFF;
+    width: 160px;
+}
+
+.banner-block{
+    display: none;
+    background-color: #BAA7BD;
+    color: #FFFFFF;
+    width: 520px;
+}
+
+.notification-block a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.banner-block a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.right-indicator{
+    background-color: #F3F3F5;
+}
+
+.title-name{
+    color: #4B0055;
+    margin-bottom: 0px;
+}
+
+.grid-element{
+    list-style: none;
+    padding: 0px;
+}
+
+.grid-element li{
+}
+
+.header-sub-menu-ul{
+    list-style: none;
+    margin: 0 0 0 228px;
+}
+
+.header-sub-menu-ul1{
+    list-style: none;
+    margin: 0 0 0 1px;
+}
+
+.header-sub-menu-ul li{
+    float: left;
+    margin-right: 10px;
+}
+
+.header-sub-menu-ul li > a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.sub-menu{
+    list-style: none;
+}
+
+.sub-menu li{
+    float: left;
+    /*margin-left: 10px;*/
+}
+
+.sub-menu-form li{
+    float: left;
+    margin-bottom:5px;
+    margin-left: 30px;
+}
+
+.middle-menu{
+    list-style: none;
+}
+.middle-menu li{
+    float: left;
+    margin-right: 10px;
+}
+
+.middle-menu a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.soft-header{
+    background-color: #8D6E98;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+
+.ver-todos-link a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.pulzo-empresa a{
+    text-decoration: none;
+    color: #8D6E98;
+}
+
+#pim{
+    list-style: none;
+    padding: 0px;
+}
+
+#ciudad-search{
+    width: 200px;
+}
+
+#mapa-pulzos{
+    width: 140px;
+    height: 140px;
+}
+
+#maping-overlay-inside{
+    width: 400px;
+    height: 400px;
+}
+
+#show-map{
+    margin: auto;
+    width: 800px;
+    height: 300px;
+}
+
+.kewl-overlay-style{
+    display: none;
+    z-index: 10000;
+    background-color: #333;
+    width: 800px;
+    height: 300px;
+    border: 10px solid #666;
+    -moz-box-shadow: 0 0 90px 5px #000;
+    -webkit-box-shados: 0 0 90px #000;
+}
+
+.kewl-overlay-style .close{
+    background-image: url(../../img/cerrar.jpg);
+    background-repeat: no-repeat;
+    z-index: 20000;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+.contenido-armaPulzo{
+    display: none;
+    z-index: 10000;
+    background-color: #F0F0F0;
+    width:680px;
+    height:400px;
+    overflow-y:auto;
+    border: 10px solid #666;
+    -moz-box-shadow: 0 0 90px 5px #000;
+    -webkit-box-shados: 0 0 90px #000;
+}
+.contenido-armaPulzo .close{
+    background-image: url(../../img/cerrar.jpg);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    z-index: 20000;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+#header-submenu-unico-dos{
+    margin-left: 742px;
+}
+
+/*---- AQUI INICIA EL CODIGO DE LAS TABS de diferentes magnitudes----*/
+
+/*menu*/
+.tabs-menu{
+   /* background-color: #E4EFC4;
+	height:20 px;*/
+}
+
+.tabs-menu ul{  
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    margin: 0px;
+}
+
+.tabs-menu li{
+    float: left;
+   /* padding-top: 6px;
+    padding-bottom: 6px;*/
+}
+
+.tabs-menu .tab-5 a{
+    display: block;
+    width: 110px;
+	height:20px;
+	padding-bottom:2px;
+	padding-top:2px;
+	background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+}
+
+.tabs-menu .tab-4 a{
+    display: block;
+    width: 138px;
+    background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+}
+
+.tabs-menu .tab-3 a{
+    display: block;
+    width: 183px;
+    background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+}
+
+.tabs-menu .tab-3-3 a{
+    display: block;
+    width: 150px;
+    background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+
+}
+
+.tabs-menu .tab-2 a{
+    display: block;
+    width: 275px;
+    background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+}
+
+.tabs-menu .tab-1 a{
+    display: block;
+    width: 550px;
+    background-color: #E4EFC4;
+    text-decoration: none;
+    text-align: center;
+    color: #AACE3A;
+}
+
+.tabs-menu a:hover{
+    background-color: #CAE388; 
+    color: #FFFFFF;
+}
+
+.tabs-menu .hud{
+    height: 1.5em;
+    width: 1.5em;
+    font-weight: bold;
+    /*background-color: #FFFFFF;*/
+    color: #CAE388;
+}
+
+.tabs-menu li:hover{
+    background-color: #CAE388;
+}
+
+/**
+ * Estilos para que aparesca el circulo verde
+ **/
+.notificaciones{
+    background-image: url(../../img/notificacion.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.verLabel{
+    color: #000;
+}
+/**
+ * Estilos para que aparezca el div de busqueda!
+ **/
+.autoComplete{
+    display:block;
+    position:absolute;
+    left:925px;
+    top:67px;
+    width:215px;
+    height:auto; 
+    background:white;
+    border:1px solid #CDCDCD;
+}
+.area-textoPublicar{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #999999;
+    padding: 4px;
+    width:524px,
+    height:16px
+}
+.autoComplete-Inbox{
+    background-color:#ffffff;
+    position: absolute;
+    left:409px;
+    cursor: pointer;
+    top:229px;
+    width:450px;
+    height:auto;
+    background:white;
+    border:1px solid #CDCDCD;
+}
+.autoComplete-Money{
+    background-color:#ffffff;
+    position: absolute;
+    left:405px;
+    cursor:pointer;
+    top:306px;
+    width:210px;
+    height:auto;
+    background:white;
+    border:1px solid #CDCDCD;
+}
+*{
+	margin:0;
+	padding:0;
+	font-family:tahoma;
+	font-size:8pt;
+}
+
+.disabled{
+	color:#CCCCCC;
+}
+
+.headbox{
+	background: #F7F9FC;
+	width:100%;
+	height:15px;
+	display:block;
+	vertical-align:top;
+}
+.bodybox{
+	background-color:#fff;
+	width:100%;
+}

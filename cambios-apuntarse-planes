@@ -1,0 +1,58 @@
+<?php if($total == 1): ?>
+                                    <?php $val = get_point_simple($planes->planId); ?>
+                                    <?php echo anchor('usuarios/perfil/'.$val->meApuntoUsuarioApuntadoId,
+                                                      get_complete_username($val->meApuntoUsuarioApuntadoId),
+                                                      array('style'=>'text-decoration: none; color: #8D6E98')); ?> se ha apuntado.
+                                <?php elseif($total == 2): ?>
+                                    <?php $apuntados = get_point($planes->planId); ?>
+                                    <?php $i = 1; ?>
+                                    <?php foreach($apuntados as $meapunto): ?>
+                                        <?php if($i == 2): ?>
+                                            <?php echo anchor('usuarios/perfil/'.$meapunto->meApuntoUsuarioApuntadoId,
+                                                              get_complete_username($meapunto->meApuntoUsuarioApuntadoId),
+                                                              array('style'=>'text-decoration: none; color: #8D6E98')); ?> se han apuntado.
+                                            <?php break; ?>
+                                        <?php endif; ?>
+                                        <?php echo anchor('usuarios/perfil/'.$meapunto->meApuntoUsuarioApuntadoId,
+                                                              get_complete_username($meapunto->meApuntoUsuarioApuntadoId),
+                                                              array('style'=>'text-decoration: none; color: #8D6E98')); ?> y
+                                        <?php $i = $i + 1; ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php $apuntados = get_point($planes->planId); ?>
+                                    <?php $i = 1; ?>
+                                    <?php foreach($apuntados as $meapunto): ?> 
+                                        <?php if($i == 2): ?>
+                                            <?php echo anchor('usuarios/perfil/'.$meapunto->meApuntoUsuarioApuntadoId,
+                                                               get_complete_username($meapunto->meApuntoUsuarioApuntadoId),
+                                                               array('style'=>'text-decoration: none; color: #8D6E98')); ?>,
+                                            <?php echo anchor('#',
+                                                              'ver todos',
+                                                              array('class'=>'mas-apuntados', 'style'=>'text-decoration: none; margin-left: 10px; color: #8D6E98')); ?>
+                                            <?php echo anchor('#',
+                                                              'ocultar todos',
+                                                               array('class'=>'ocultar-apuntados', 'style'=>'text-decoration: none; margin-left: 10px; color: #8D6E98; display: none')); ?>
+                                        <?php endif; ?> 
+                                        <?php if($i == 3): ?>
+                                            <?php $contarTodos = get_count_pointed($meapunto->meApuntoPlanId); ?>
+                                            <?php $number_register = $contarTodos - 2; ?>
+                                            <?php $menosDos = get_count_remaining($meapunto->meApuntoPlanId, $number_register); ?>
+                                            <div class="div-muestra-apuntados span-10" style="display: none">
+                                            <?php foreach($menosDos as $restantes): ?>
+                                                <?php echo anchor('usuarios/perfil/'.$restantes->meApuntoUsuarioApuntadoId,
+                                                                  get_complete_username($restantes->meApuntoUsuarioApuntadoId),
+                                                                  array('style'=>'text-decoration: none; color: #8D6E98')); ?>,
+                                            <?php endforeach; ?>
+                                            </div>
+                                            <?php break; ?>
+                                        <?php endif; ?>
+                                        <?php if($i == 1): ?>
+                                            <?php echo anchor('usuarios/perfil/'.$meapunto->meApuntoUsuarioApuntadoId,
+                                                              get_complete_username($meapunto->meApuntoUsuarioApuntadoId),
+                                                              array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'mas-apuntados')); ?>,
+                                        <?php endif; ?>
+                                        <?php $i = $i + 1; ?>
+                                    <?php endforeach; ?>
+                                <?php //y <?php echo $total = $total - 2; ? > mas se han apuntado. ?>
+                                <?php endif; ?>
+

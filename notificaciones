@@ -1,0 +1,537 @@
+<script type="text/javascript">
+  $(".eliminar-mas") .click(function(event){
+      event.preventDefault();
+      urlEliminar = $(event.currentTarget).attr('href');
+      $.get(urlEliminar);
+      $(event.currentTarget).parent().parent().parent().parent().parent().hide('fast');
+  });
+
+  $(".ver-mas").click(function(event){
+      event.preventDefault();
+      urlVerMas = $(event.currentTarget).attr('href');
+      $("#texto-menu").load(urlVerMas);
+  });
+
+  $(".comentarios").click(function(event){
+      event.preventDefault();
+      urlCambio = $(event.currentTarget).attr('href');
+      $('#texto-menu').load(urlCambio);
+  });
+
+$(document).ready(function(){
+    name_complete = $("#nombre-usuario-plan").text();
+    age_complete = $("#edad-usuario-plan").text();
+    relation_complete = $("#relacion-usuario-plan").text();
+    state_complete = $("#estado-usuario-plan").text();
+    $("#nombre-profile").text(name_complete);
+    $("#edad-profile").text(age_complete);
+    $("#personal-profile").text(relation_complete);
+    $("#localidad-profile").text(state_complete);
+    var texto = $("div#menu-derecha").html();
+    $("#main-div").html(texto);
+});
+</script>
+<div class="span-14 last" style="margin-top: 10px"><!-- DIV PRINCIPAL DE NOTIFICACIONES -->
+    <div style="display: none">
+        <div id="nombre-usuario-plan">Notificaciones</div>
+        <div id="edad-usuario-plan"></div>
+        <div id="relacion-usuario-plan"></div>
+        <div id="estado-usuario-plan"></div>
+        <div id="menu-derecha"></div>
+    </div>
+    <div class="span-13"><!-- DIV DEL FOREACH **INICIO** -->    
+        <?php foreach($notificaciones as $notificar): ?><!-- FOREACH **INICIO** -->
+          <?php $total_notificaciones = get_total_notificaciones($notificar->notificacionPlanId, $this->session->userdata('id')); ?>
+          <?php if($total_notificaciones > 0): ?><!-- CONTEO DE LAS NOTIFICACIONES **INICIO** -->
+          <?php $notificacion = obtener_todas_notificaciones($notificar->notificacionPlanId);//, $this->session->userdata('id')); ?>
+          <?php if($notificacion->notificacionUsuarioId != $this->session->userdata('id')): ?>
+            <?php if($notificacion->notificacionLeido == 0): ?>
+                <?php if($notificacion->notificacionTipo == 0): ?><!-- IF SI ES COMENTARIO O APUNTARSE **INICIO** -->
+                    <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION COMENTARIO **INICIO** -->
+                        <div class="span-14">
+                            <div class="span-1">
+                                <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                     'width'=>'37',
+                                                     'height'=>'37')); ?>
+                            </div>  
+                            <div class="interlineado span-12 last" style="margin-top: 3px">
+                                <div style="margin-left: 10px">
+                                    <span class="pulzos_titulo3">
+                                        <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                        <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                          get_complete_username($notificacion->notificacionUsuarioId),
+                                                          array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                    </span>
+                                    <span class="pulzos_titulo4">
+                                        ha
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                          'comentado', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                        <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                            <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                en la publicacion de tu perfil.
+                                                <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php else: ?>
+                                                en la publicacion de su perfil.
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                en la publicacion de tu perfil.
+                                            <?php else: ?>
+                                                en el perfil de 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                                  get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="span-12">
+                                <div class="prepend-9 span-3">
+                                    <span style="margin-right: 10px">
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                          'Ver',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                    </span>
+                                    <span>
+                                        <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                          //$notificacion->notificacionId,
+                                                          'Eliminar',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- DIV PRINCIPAL DE NOTIFICACION COMENTARIO **FIN** -->
+                <?php else: ?><!-- ELSE SI ES APUNTARSE -->
+                    <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                        <div class="span-14">
+                            <div class="span-1">
+                                <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                     'width'=>'37',
+                                                     'height'=>'37')); ?>
+                            </div>
+                            <div class="interlineado span-12 last" style="margin-top: 3px">
+                                <div style="margin-left: 10px">
+                                    <span class="pulzos_titulo3">
+                                        <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                        <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                          get_complete_username($notificacion->notificacionUsuarioId),
+                                                          array('class'=>'pulzos_titulo3', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                    </span>
+                                    <span class="pulzos_titulo4">
+<?php /*     se ha apuntado al
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                            'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                        <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                            <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                alguien se ha apuntado a tu 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php else: ?>
+                                                alguien se ha apuntado a su 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                alguien se ha apuntado a tu 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php else: ?>
+                                                alguien se ha apuntado a su 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="span-12">
+                                <div class="prepend-9 span-3">
+                                    <span style="margin-right: 10px">
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                          'Ver',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                    </span>
+                                    <span>
+                                        <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                          'Eliminar',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                <?php endif; ?><!-- IF SI ES COMENTARIO O APUNTARSE **FIN** -->
+            <?php else: ?>
+                <?php $notificacion = obtener_todas_notificaciones($notificar->notificacionPlanId); ?>
+                <?php if($notificacion->notificacionTipo == 0): ?><!-- IF SI ES COMENTARIO O APUNTARSE **INICIO** -->
+                    <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION COMENTARIO **INICIO** -->
+                        <div class="span-14">
+                            <div class="span-1">
+                                <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                     'width'=>'37',
+                                                     'height'=>'37')); ?>
+                            </div>  
+                            <div class="interlineado span-12 last" style="margin-top: 3px">
+                                <div style="margin-left: 10px">
+                                    <span class="pulzos_titulo1">
+                                        <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                        <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                          get_complete_username($notificacion->notificacionUsuarioId),
+                                                          array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                    </span>
+                                    <span class="pulzos_titulo2">
+                                        ha
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                          'comentado', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                        <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                            <?php if($planesU->planUsuarioId != $this->session->userdata('id')): ?>
+                                                en la publicacion de su perfil.
+                                                <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php else: ?>
+                                                en la publicacion de tu perfil.
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                en la publicacion de tu perfil.
+                                            <?php else: ?>
+                                                en el perfil de 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                                  get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="span-12">
+                                <div class="prepend-9 span-3">
+                                    <span style="margin-right: 10px">
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                          'Ver',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                    </span>
+                                    <span>
+                                        <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                          //$notificacion->notificacionId,
+                                                          'Eliminar',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- DIV PRINCIPAL DE NOTIFICACION COMENTARIO **FIN** -->
+                <?php else: ?><!-- ELSE SI ES APUNTARSE -->
+                    <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                        <div class="span-14">
+                            <div class="span-1">
+                                <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                     'width'=>'37',
+                                                     'height'=>'37')); ?>
+                            </div>
+                            <div class="interlineado span-12 last" style="margin-top: 3px">
+                                <div style="margin-left: 10px">
+                                    <span class="pulzos_titulo1">
+                                        <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                        <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                          get_complete_username($notificacion->notificacionUsuarioId),
+                                                          array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none')); ?>
+                                    </span>
+                                    <span class="pulzos_titulo2">
+                                        se ha apuntado al
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                         'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                        que se ha hecho en el perfil de
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                          get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="span-12">
+                                <div class="prepend-9 span-3">
+                                    <span style="margin-right: 10px">
+                                        <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                          'Ver',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                    </span>
+                                    <span>
+                                        <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                          'Eliminar',
+                                                          array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                <?php endif; ?><!-- IF SI ES COMENTARIO O APUNTARSE **FIN** -->
+            <?php endif; ?>
+          <?php else: ?>
+            <?php if($notificacion->notificacionLeido == 0): ?><!-- IF LEIDO -->
+                <?php if($notificacion->notificacionTipo == 0): ?><!-- IF TIPO -->
+                    <?php $contar = count_notifications_mines($notificacion->notificacionPlanId, $notificacion->notificacionUsuarioId); ?>
+                    <?php if($contar > 0): ?>
+                        <?php $registroLast = last_data_notification($this->session->userdata('id'), $notificacion->notificacionPlanId); ?>
+                        <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                            <div class="span-14">
+                                <div class="span-1">
+                                    <?php echo img(array('src'=>get_avatar($registroLast->notificacionUsuarioId),
+                                                         'width'=>'37',
+                                                         'height'=>'37')); ?>
+                                </div>
+                                <div class="interlineado span-12 last" style="margin-top: 3px">
+                                    <div style="margin-left: 10px">
+                                        <span class="pulzos_titulo1">
+                                            <?php $planesU = get_data_plain($registroLast->notificacionPlanId); ?>
+                                            <?php echo anchor('usuarios/perfil/'.$registroLast->notificacionUsuarioId,
+                                                                get_complete_username($registroLast->notificacionUsuarioId),
+                                                                array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none')); ?>
+                                        </span>
+                                        <span class="pulzos_titulo4">
+                                            ha realizado un
+                                            <?php echo anchor('notificaciones/ver/'.$registroLast->notificacionId,
+                                                              'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                            <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                                <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                    en la publicacion de tu perfil.
+                                                <?php else: ?>
+                                                    en la publicacion de su perfil.
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                    en la publicacion de tu perfil.
+                                                <?php else: ?>
+                                                    en la publicacion de su perfil.
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php /*echo anchor('notificaciones/ver/'.$registroLast->notificacionId,
+                                                get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span-12">
+                                    <div class="prepend-9 span-3">
+                                        <span style="margin-right: 10px">
+                                            <?php echo anchor('notificaciones/ver/'.$registroLast->notificacionId.'/'.$registroLast->notificacionPlanId,
+                                                              'Ver',
+                                                               array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                        </span>
+                                        <span>
+                                            <?php echo anchor('notificaciones/eliminar/'.$registroLast->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                              'Eliminar',
+                                                               array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                    <?php endif; ?>
+                <?php else: ?>
+                    <?php $contar = count_notifications_pointer($notificacion->notificacionPlanId, $notificacion->notificacionUsuarioId); ?>
+                    <?php if($contar > 0): ?>
+                        <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                            <div class="span-14">
+                                <div class="span-1">
+                                    <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                         'width'=>'37',
+                                                         'height'=>'37')); ?>
+                                </div>
+                                <div class="interlineado span-12 last" style="margin-top: 3px">
+                                    <div style="margin-left: 10px">
+                                        <span class="pulzos_titulo1">
+                                            <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                            <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                              get_complete_username($notificacion->notificacionUsuarioId),
+                                                              array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                        </span>
+                                        <span class="pulzos_titulo4">
+<?php /*se ha apuntado al
+                                            <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                                <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                    alguien se ha apuntado a tu 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                    <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                        get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                                <?php else: ?>
+                                                    alguien se ha apuntado a su 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                    alguien se ha apuntado a tu 
+                                                <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                    <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                        get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                                <?php else: ?>
+                                                    alguien se ha apuntado a su 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span-12">
+                                    <div class="prepend-9 span-3">
+                                        <span style="margin-right: 10px">
+                                            <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                              'Ver',
+                                                              array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                        </span>
+                                        <span>
+                                            <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                              'Eliminar',
+                                                              array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                    <?php endif; ?>
+                <?php endif; ?><!-- IF DE TIPO -->
+            <?php else: ?>
+                <?php if($notificacion->notificacionTipo == 0): ?>
+                <?php $contar = count_notifications_mines($notificacion->notificacionPlanId, $notificacion->notificacionUsuarioId); ?>
+                <?php if($contar > 0): ?>
+                    <?php $registroLast = last_data_notification($this->session->userdata('id'), $notificacion->notificacionPlanId);
+                          //var_dump($registroLast);
+                     ?>
+                        <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                            <div class="span-14">
+                                <div class="span-1">
+                                    <?php echo img(array('src'=>get_avatar($registroLast->notificacionUsuarioId),
+                                                         'width'=>'37',
+                                                         'height'=>'37')); ?>
+                                </div>
+                                <div class="interlineado span-12 last" style="margin-top: 3px">
+                                    <div style="margin-left: 10px">
+                                        <span class="pulzos_titulo1">
+                                            <?php $planesU = get_data_plain($registroLast->notificacionPlanId); //var_dump($planesU); ?>
+                                            <?php echo anchor('usuarios/perfil/'.$registroLast->notificacionUsuarioId,
+                                                                get_complete_username($registroLast->notificacionUsuarioId),
+                                                                array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                        </span>
+                                        <span class="pulzos_titulo4">
+                                            ha realizado un
+                                            <?php echo anchor('notificaciones/ver/'.$registroLast->notificacionId,
+                                                              'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                            <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                                <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                    en la publicacion de tu perfil.
+                                                <?php else: ?>
+                                                    en la publicacion de su perfil.
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                    en la publicacion de tu perfil.
+                                                <?php else: ?>
+                                                    en la publicacion de su perfil.
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php /*echo anchor('notificaciones/ver/'.$registroLast->notificacionId,
+                                                get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span-12">
+                                    <div class="prepend-9 span-3">
+                                        <span style="margin-right: 10px">
+                                            <?php echo anchor('notificaciones/ver/'.$registroLast->notificacionId.'/'.$registroLast->notificacionPlanId,
+                                                              'Ver',
+                                                               array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                        </span>
+                                        <span>
+                                            <?php echo anchor('notificaciones/eliminar/'.$registroLast->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                              'Eliminar',
+                                                               array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                    <?php endif; ?>
+                <?php else: ?>
+                    <?php $contar = count_notifications_pointer($notificacion->notificacionPlanId, $notificacion->notificacionUsuarioId); ?>
+                    <?php if($contar > 0): ?>
+                        <div class="span-13" style="margin-bottom: 5px; border-bottom: 1px solid #DAD6DB"><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **INICIO** -->
+                            <div class="span-14">
+                                <div class="span-1">
+                                    <?php echo img(array('src'=>get_avatar($notificacion->notificacionUsuarioId),
+                                                         'width'=>'37',
+                                                         'height'=>'37')); ?>
+                                </div>
+                                <div class="interlineado span-12 last" style="margin-top: 3px">
+                                    <div style="margin-left: 10px">
+                                        <span class="pulzos_titulo1">
+                                            <?php $planesU = get_data_plain($notificacion->notificacionPlanId); ?>
+                                            <?php echo anchor('usuarios/perfil/'.$notificacion->notificacionUsuarioId,
+                                                              get_complete_username($notificacion->notificacionUsuarioId),
+                                                              array('class'=>'pulzos_titulo1', 'style'=>'text-decoration: none; color: #8D6E98')); ?>
+                                        </span>
+                                        <span class="pulzos_titulo4">
+<?php /*se ha apuntado al
+                                            <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                            <?php if($planesU->planAmigoUsuarioId == 0): ?>
+                                                <?php if($planesU->planUsuarioId == $this->session->userdata('id')): ?>
+                                                    alguien se ha apuntado a tu 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                    <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                        get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                                <?php else: ?>
+                                                    alguien se ha apuntado a su 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <?php if($planesU->planAmigoUsuarioId == $this->session->userdata('id')): ?>
+                                                    alguien se ha apuntado a tu 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                    <?php /*echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                        get_complete_username($planesU->planUsuarioId), array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900'));*/ ?>
+                                                <?php else: ?>
+                                                    alguien se ha apuntado a su 
+                                                    <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId,
+                                                    'comentario', array('class'=>'comentarios', 'style'=>'text-decoration: none; color: #339900')); ?>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span-12">
+                                    <div class="prepend-9 span-3">
+                                        <span style="margin-right: 10px">
+                                            <?php echo anchor('notificaciones/ver/'.$notificacion->notificacionId.'/'.$notificacion->notificacionPlanId,
+                                                              'Ver',
+                                                              array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'ver-mas')); ?>
+                                        </span>
+                                        <span>
+                                            <?php echo anchor('notificaciones/eliminar/'.$notificacion->notificacionPlanId.'/'.$this->session->userdata('id'),
+                                                              'Eliminar',
+                                                              array('style'=>'text-decoration: none; color: #8D6E98', 'class'=>'eliminar-mas')); ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- DIV PRINCIPAL DE NOTIFICACION APUNTARSE **FIN** -->
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endif; ?><!-- IF DE LEIDO -->
+          <?php endif; ?><!-- IF CONTADOR -->
+         <?php endif; ?><!-- CONTEO DE LAS NOTIFICACIONES **FIN** -->
+        <?php endforeach; ?><!-- FOREACH **FIN** -->
+    </div><!-- DIV DEL FOREACH **FIN** -->
+</div><!-- DIV PRINCIPAL DE NOTIFICACIONES -->

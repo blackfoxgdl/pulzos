@@ -1,0 +1,895 @@
+<?php if(! defined('BASEPATH')) exit('No direct Script Access allowed');
+/**
+ * Modulo que se usa para obtener los permisos a las diversas
+ * redes sociales que se tendran en la plataforma para que
+ * se puedan postear lo que se escribe en pulzos a facebook,
+ * twitter, foursquare, google + etc
+ *
+ * @version 0.1
+ * @author blackfoxgdl <ruben.alonso21@gmail.com>
+ * @copyright Zavordigital, Sep 21, 2011
+ * @package redessociales
+ **/
+class redesSociales extends MX_Controller{
+
+    /**
+     * Metodo constructor en el cual se dara la inicializacion
+     * o la declaracion de las librerias, helpers o modelo que se
+     * usaran en este modulo para ciertas funcionalidades
+     *
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library(array('session', 'form_validation', 'user_agent'));
+        $this->load->helper(array('url', 'html', 'cyp', 'passworder', 'avatar', 'apipulzos', 'status', 'date', 'counters'));
+        $this->load->model('redSocial', '', TRUE);
+    }
+
+    /**
+     * Metodo que se usa para poder obtener los datos de los usuarios que
+     * quieran ligar su cuenta de pulzos con facebook y asi obtener sus
+     * tokens y poder guardarlos en la base de datos
+     *
+     * @params int id del usuario
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function index($id)
+    {
+        redirect('redessociales/red_social/'.$id);
+    }
+
+    /**
+     * Metodo que se usa para poder guardar las redes sociales, antes era
+     * el index pero como facebook es muy delicado pues no nos deja por delicado
+     * la mamada
+     *
+     * @params int id del usuario
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function red_social($id)
+    {
+     /*   $urlFace = $_SERVER['REQUEST_URI'];
+        $valor1 = explode('=', $urlFace);
+        if(isset($valor[1])){
+            redirect('negocios/perfil');
+        }
+        else
+        {
+            $valor2 = explode('?', $urlFace);
+            if(isset($valor2[1]))
+            {
+                redirect('negocios/perfil');
+            }
+        }*/
+        //SE CARGA LA LIBRERIA DEL PAQUETE
+        //$this->load->add_package_path(APPPATH.'third_party/social_media/');
+        //$this->load->library('facebooklib');
+
+        //OBTENER AL ACTUAL USUARIO Y GENERAR UN LINK DE SOLICITUD DE EXISTENCIA
+        //$user_link = $this->facebooklib->get_facebook_user();
+        //var_dump($user_link);
+        $this->load->add_package_path(APPPATH.'third_party/social_media_user/');
+        $this->load->library('facebooklib2'); //PARTE NUEVA
+
+        //OBTENER AL ACTUAL USUARIO Y GENERAR UN LINK DE SOLICITUD DE EXISTENCIA
+        //$user_link = $this->facebooklib->get_facebook_user();
+        $user_link = $this->facebooklib2->get_user();
+
+        if($this->tweet->logged_in())
+        {
+            $tokens = $this->tweet->get_tokens();
+            $flag = True;
+        }
+        else
+        {
+            $tokens = array();
+            $flag = False;
+        }
+        
+        $arreglo_pass = array(
+            'user_link'=>$user_link,
+            'facebook'=>$this->facebooklib2,
+            'tokens'=>$tokens,
+            'flag'=>$flag,
+            'id'=>$id
+        );
+        
+        //se carga la vista
+        $this->load->view('redessociales/index');//, $arreglo_pass);
+    }
+
+    public function red_social_new($id=null)
+    {
+     /*   $urlFace = $_SERVER['REQUEST_URI'];
+     $valor1 = explode('=', $urlF;
+        if(isset($valor[1])){
+            redirect('negocios/perfil');
+        }
+        else
+        {
+            $valor2 = explode('?', $urlFace);
+            if(isset($valor2[1]))
+            {
+                redirect('negocios/perfil');
+            }
+        }*/
+        //SE CARGA LA LIBRERIA DEL PAQUETE
+        $this->load->add_package_path(APPPATH.'third_party/social_media/');
+        $this->load->library('facebooklib');
+
+        //OBTENER AL ACTUAL USUARIO Y GENERAR UN LINK DE SOLICITUD DE EXISTENCIA
+        $user_link = $this->facebooklib->get_user();//get_facebook_user();
+        //var_dump($user_link);
+
+        if($this->tweet->logged_in())
+        {
+            $tokens = $this->tweet->get_tokens();
+            $flag = True;
+        }
+        else
+        {
+            $tokens = array();
+            $flag = False;
+        }
+        
+        $arreglo_pass = array(
+            'user_link'=>$user_link,
+            'facebook'=>$this->facebooklib,
+            'tokens'=>$tokens,
+            'flag'=>$flag,
+            'id'=>$id
+        );
+        
+        //se carga la vista
+        $this->load->view('redessociales/pruebas', $arreglo_pass);
+    } 
+
+    /**
+     * Metodo que se usa para obtener los links de donde se
+     * redireccionara el twitter para que el mismo pueda llevarte a la
+     * aplicacion y obtener los access tokens que se necesitan para
+     * poder ligarlos con la cuenta de pulzos y se postie al momento
+     * de que se haga el money back
+     *
+     * @return string oauths de twitter
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function get_twitter_tokens()
+    {
+        if($this->tweet->logged_in())
+        {
+            //header('location: http://localhost/pulzos/index.php/negocios/perfil');
+            redirect('negocios/perfil');//'redessociales/facebook');
+
+        }
+        $this->tweet->set_callback(site_url('negocios/perfil'));
+        $this->tweet->login();
+    }
+
+    /**
+     * Metodo que se usa para poder guardar los datos
+     * de los usuarios en lo que se refiere a social media
+     * para que cuando se ligue su cuenta en lo que se refiere a 
+     * sus redes sociales, ademas de que se usa para guardar los datos
+     * de las ofertas haciendo el proceso completo en un solo paso
+     * para evitar tantas cosas tediosas para el usuario
+     *
+     * @params int id del negocio
+     * @params int bandera conocer si es nuevo o actualizar datos
+     *
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function guardar($id, $band)
+    {
+        $post = $this->input->post('Redes');
+        $post2 = $this->input->post('Oferta');
+        if($band == 0)
+        {
+        /*if($post)
+        {
+            $valor = $this->redSocial->count_number_register($id);
+            if($valor == 0)
+            {*/
+                //echo "hola de nuevo";
+                $post['socialEmpresaUsuarioId'] = $id;
+                //var_dump($post);
+                $val = $this->redSocial->save_tokens_company($post);
+
+                //parte para guardar las ofertas
+                $post2['idNegocioOferta'] = $id;
+                $post2['idMensajeOferta'] = $val;
+                $post2['tipoDescuento'] = '1';
+                $return = $this->redSocial->save_ofert($post2);
+                foreach($_POST['Productos'] as $texto)
+                {
+                    if($texto != '')
+                    {
+                        $data = array('product_category'=>$texto,
+                                      'idOfertas'=>$return);
+                        $this->redSocial->save_products($data);
+                    }
+                }
+        
+                if(!empty($_POST['Categorias']))
+                {
+                    foreach($_POST['Categorias'] as $categorias)
+                    {
+                        if($categorias != '')
+                        {
+                            $data = array('product_category'=>$categorias,
+                                          'idOfertas'=>$return);
+                            $this->redSocial->save_products($data);
+                        }
+                    }
+                }
+        }
+        else
+        {
+            //ACTUALIZAR LOS DATOS DE LAS OFERTAS
+            $ids_ofertas = $this->redSocial->get_data_current($id);
+            $this->redSocial->update_data_company($post, $ids_ofertas->idMensajeOferta);
+            $post2['idNegocioOferta'] = $id;
+            $post2['idMensajeOferta'] = $ids_ofertas->idMensajeOferta;
+            $post2['tipoDescuento'] = '1';
+            $this->redSocial->update_data_oferts($post2, $ids_ofertas->ofertaId);
+            if($post2['tipoDescuento'] == 1)
+            {
+                $this->redSocial->delete_products_category($ids_ofertas->ofertaId);
+            }
+            if($post2['tipoDescuento'] == 2)
+            {
+                $this->redSocial->delete_products_category($ids_ofertas->ofertaId);
+                foreach($_POST['Productos'] as $texto)
+                {
+                    if($texto != '')
+                    {
+                        $data = array('product_category'=>$texto,
+                                      'idOfertas'=>$ids_ofertas->ofertaId);
+                        $this->redSocial->update_products_category($data);
+                    }
+                }
+            }
+            if($post2['tipoDescuento'] == 3)
+            {
+                $this->redSocial->delete_products_category($ids_ofertas->ofertaId);
+                foreach($_POST['Categorias'] as $categorias)
+                {
+                    if($categorias != '')
+                    {
+                        $data = array('product_category'=>$categorias,
+                                      'idOfertas'=>$ids_ofertas->ofertaId);
+                        $this->redSocial->update_products_category($data);
+                    }
+                }
+            }
+        }
+       // }
+    }
+
+    
+    /**
+     * Metodo que se usa para guardar los datos de los negocios en cuanto a las
+     * ofertas que estos ofrecen por parte de la empresa para que el usuario
+     * despues pueda hacer sus bonificaciones dependiendo los productos que se tienen actualmente
+     * en oferta por parte de la empresa, me volvi a confundir lo que dije
+     *
+     * @params int id del negocio como negocio
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **
+    public function guardar_ofertas($id)
+    {
+        $post = $this->input->post('Oferta');
+        //echo "hola: " . $id;
+        //var_dump($post);
+        $post['idNegocioOferta'] = $id;
+        $return = $this->redSocial->save_ofert($post);
+        
+        foreach($_POST['Productos'] as $texto)
+        {
+            if($texto != '')
+            {
+                $data = array('product_category'=>$texto,
+                              'idOfertas'=>$return);
+                $this->redSocial->save_products($data);
+            }
+        }
+        
+        if(!empty($_POST['Categorias']))
+        {
+            foreach($_POST['Categorias'] as $categorias)
+            {
+                if($categorias != '')
+                {
+                    $data = array('product_category'=>$categorias,
+                                  'idOfertas'=>$return);
+                    $this->redSocial->save_products($data);
+                }
+            }
+        }
+    }*/
+
+
+    /**
+     * Se obtienen los tokens de los usuarios por medio de twitter con la
+     * cual los usuarios podran obtener los valores para poder postear en
+     * twitter y que aparesca la promocion que se tenga en la parte de los
+     * usuarios
+     *
+     * @return void
+     * @author
+     **/
+    public function get_twitter_tokens_bonficacionU()
+    {
+        if($this->tweet->logged_in())
+        {
+            //header('location: http://localhost/pulzos/index.php/usuarios/perfil');
+            //redirect('usuarios/perfil');
+            $var = "http://www.pulzos.com/inicio.php/redessociales/redes_sociales_usuarios";
+            redirect($var);//'redessociales/redes_sociales_usuarios?');
+
+        }
+        $var = "http://www.pulzos.com/inicio.php/redessociales/redes_sociales_usuarios";
+        $this->tweet->set_callback($var);//site_url('redessociales/redes_sociales_usuarios?'));//('usuarios/perfil'));
+        $this->tweet->login();
+    }
+
+    /**
+     * Metodo que se usa para poder postear los mensajes en las diversas redes sociales que
+     * haya, esto para que se pueda realizar la bonificacion por parte del negocio, pedo para
+     * esto se tiene que realizar primero la promocion del posteo de redes sociales donde
+     * estas recomendando a la empresa que esta dando dinero y noc que chingados dije
+     *
+     * @params int id del usuario
+     * @params int id de la oferta a la que se esta bonificando
+     * @params int id de la bonificacion del usuario
+     *
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+
+    //prueba de postepo 2.0
+    /*public function posteo_mas($id)
+    {
+        $datos = $this->redSocial->get_data_post($id);
+        var_dump($datos);
+        $this->load->add_package_path(APPPATH.'third_party/social_media/');
+        $this->load->library('facebooklib');
+        echo "hola";
+        $datos2 = "AAABft5IueeoBABSsz4sQOeeEC485YZCZAvyt99tgJ3h7hsQyjCWdNDgL4P1o7RE3Lsp6ykPdHvwyZBU0ltd32fBdwSl3KMZD";
+        $mensaje = "Y con la nueva api de facebook, ya lo entendi jajajaja";
+        //$linkes = "";
+        $this->facebooklib->post_wall_2($datos2, $mensaje, $linkes);//$datos->tokenFacebook, $mensaje);
+    }*/
+
+    public function post_social_media($id, $id_oferta, $id_bonificacion)
+    {
+        //echo "cual es el pinche Id de la oferta: " . $id_oferta;
+        $datos = $this->redSocial->get_data_post($id);
+        $ofertas = $this->redSocial->get_data_offerts($id_oferta);
+        //var_dump($ofertas);
+        $mensajes = $this->redSocial->get_data_promotion($ofertas->idMensajeOferta);
+        //var_dump($datos);
+        //var_dump($ofertas);
+        //var_dump($mensajes);
+
+        //echo "puta madre porque no lo obtiene: " . $id . " " . $ofertas->idMensajeOferta;
+        //POST TO FACEBOOK
+        $this->load->add_package_path(APPPATH.'third_party/social_media_user/');
+        //$this->load->library('facebooklib');
+        $this->load->library('facebooklib2');
+
+        //FACEBOOK POST
+        /*if(!empty($datos->uidFacebook) && !empty($datos->tokenFacebook))
+        {
+            $posteos_datos = array('access_token'=>$datos->tokenFacebook,
+                'message'=>$mensajes->mensajeFacebook);//'hola prueba nueva de facebook');
+            var_dump($posteos_datos);
+            $this->facebooklib->post_wall($datos->uidFacebook, $posteos_datos);
+        }*/
+        /** INICIO A LA NUEVA FORMA DE POSTEAR **/
+/*        if(!empty($datos->tokenFacebook))
+        {
+            $val_geotag = get_geotag_data($id_oferta);
+            $link_post = $this->redSocial->get_data_links_socialmedia($val_geotag->geotagGId);
+            if($link_post->scribbleAnexos != '0')
+            {
+                //echo "con link";
+                $this->facebooklib2->post_wall_new($datos->tokenFacebook, $mensajes->mensajeFacebook, $link_post->scribbleAnexos);
+            }
+            else
+            {
+                //echo "sin link";
+                $this->facebooklib2->post_wall_new($datos->tokenFacebook, $mensajes->mensajeFacebook);
+            }
+        }
+        /** FIN A LA NUEVA FORMA DE POSTEAR **/
+/*
+        //TWITTER POST
+        if(!empty($datos->twitter_oauth) && !empty($datos->twitter_oauth_secret))
+        {
+            $mensaje_complete = $mensajes->mensajeTwitter . ' #Pulzos';
+            $this->tweet->set_tokens(array('oauth_token'=>$datos->twitter_oauth,
+                                           'oauth_token_secret'=>$datos->twitter_oauth_secret));
+            $resultados = $this->tweet->call('post', 'statuses/update', array('status'=>$mensaje_complete));
+            //$mensajes->mensajeTwitter));//'Prueba de posteo en Twitter'));
+        }
+*/$mensaje_complete = $mensajes->mensajeTwitter . ' #Pulzos';
+        $this->redSocial->update_bonifications_status($id_bonificacion);
+
+        //PARTE DE VALIDACION DE MENSAJES
+        if($mensajes->mensajeFacebook != '')
+        {
+            $mensajePulzos = $mensajes->mensajeFacebook;
+        }
+        else
+        {
+            $mensajePulzos = $mensajes->mensajeTwitter;
+        }
+
+        //PARTE DE PUBLICACION EN MURO DE PULZOS
+        $valoresPublicacion = array('planUsuarioId'=>$id,
+                                    'planTipo'=>'1',
+                                    'planDescripcion'=>$mensajePulzos,//$mensajes->mensajePulzos,//'prueba',
+                                    'planFechaCreacion'=>time());
+
+        $this->redSocial->insert_post_in_wall($valoresPublicacion);
+       
+        $comisionesRecibidas = $this->redSocial->get_all_data_bonifications_company($id_bonificacion);
+
+        //var_dump($comisionesRecibidas);
+
+        $valor1 = $comisionesRecibidas->moneyBackOtorgado * 2.8;
+        $valor2 = $valor1/100;
+        $fechaTransaccion = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+        $timestamp = date('dmYHis');
+        $nombre_empresa = get_name_company($comisionesRecibidas->moneyNegocioId);
+        $transaccion = reference_number($nombre_empresa->negocioNombre,$timestamp);
+
+        //INSERTAR O ACTUALIZAR EN LA PARTE DEL HISTORIAL
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
+
+        $fechaIni = mktime(0, 0, 0, date('m'), 1, date('Y'));
+        $fechaFin = mktime(0, 0, 0, date('m'), 15, date('Y'));
+        $fechaIni1 = mktime(0, 0, 0, date('m'), 16, date('Y'));
+        $fechaFin1 = mktime(0, 0, 0, date('m'), 30, date('Y'));
+
+        if($dia >= 0 || $dia <=15)
+        {
+            $contador = $this->redSocial->count_all_register_history($ofertas->idNegocioOferta, $fechaIni, $fechaFin);
+            echo "contador: " . $contador . "<br />";
+            if($contador != 0)
+            {
+                $registros_history = $this->redSocial->get_data_history_row($ofertas->idNegocioOferta, $fechaIni, $fechaFin);
+                echo "<br /><br />";
+                var_dump($registros_history);
+                $valor_id = $registros_history->idHistorial;
+                echo "<br /><br />valor_id: " . $valor_id;
+                $totalUpdate = $registros_history->historialTotalQuincenal + $comisionesRecibidas->moneyBackOtorgado;
+                echo "<br /><br /><br />total_update: " . $totalUpdate;
+                $this->redSocial->update_data_history($totalUpdate,$id);
+            }
+            else
+            {
+                $new_history = array('historialEmpresaId'=>$ofertas->idNegocioOferta,
+                                     'historialTotalQuincenal'=>$comisionesRecibidas->moneyBackOtorgado,
+                                     'historialStatusDeposito'=>'0',
+                                     'historialFechaInicio'=>$fechaIni,
+                                     'historialFechaFin'=>$fechaFin);
+                $valor_id = $this->redSocial->saveNew_history($new_history);
+            }
+        }
+        elseif($dia >= 16 || $dia <=30)
+        {
+            $contador = $this->redSocial->count_all_register_history($ofertas->idNegocioOferta, $fechaIni, $fechaFin);
+            if($contador != 0)
+            {
+                $registros_history = $this->redSocial->get_data_history_row($ofertas->idNegocioOferta, $fechaIni, $fechaFin);
+                $valor_id = $registros_history->idHistorial;
+                $totalUpdate = $registros_history->historialTotalQuincenal + $comisionesRecibidas->moneyBackOtorgado;
+                $this->redSocial->update_data_history($totalUpdate,$id);
+            }
+            else
+            {
+                $new_history = array('historialEmpresaId'=>$ofertas->idNegocioOferta,
+                                     'historialTotalQuincenal'=>$comisionesRecibidas->moneyBackOtorgado,
+                                     'historialStatusDeposito'=>'0',
+                                     'historialFechaInicio'=>$fechaIni,
+                                     'historialFechaFin'=>$fechaFin);
+                $valor_id = $this->redSocial->saveNew_history($new_history);
+            }
+        }
+
+        //PARTE DE LA COMISION
+        $comisiones = array('comisionRecibidaEmpresaId'=>$comisionesRecibidas->moneyNegocioId,
+                            'comisionRecibidaUsuarioId'=>$comisionesRecibidas->usuarioMoneyUsuarioId,
+                            'comisionRecibidaFolioTransaccion'=>$comisionesRecibidas->moneyFolioFactura,
+                            'comisionRecibidaUsuarioBonificacion'=>$comisionesRecibidas->usuarioMoneyTotal,
+                            'comisionRecibidaBonificacionZavor'=>$valor2,
+                            'comisionRecibidaNumeroReferencia'=>$transaccion,
+                            'comisionRecibidaFechaTransaccion'=>$fechaTransaccion,
+                            'comisionRecibidaHistorialId'=>$valor_id);
+        $comision_usuario = $this->redSocial->insert_revenues($comisiones);
+
+        //OBTENER LOS DATOS DE LA PRIMER BITACORA
+        $bitacoraUnoData = $this->redSocial->get_bitacora_data($id_bonificacion);
+        //PARTE DONDE SE GUARDA LA INFORMACION DE LA BITACORA DE PUBLICACION
+        $public_bita = array('bitacoraDosUsuarioAcepta'=>$bitacoraUnoData->bitacoraUsuarioEnviaId,
+                             'bitacoraDosUsuarioPublica'=>$bitacoraUnoData->bitacoraUsuarioRecibeId,
+                             'bitacoraDosMsjFb'=>$mensajes->mensajeFacebook,
+                             'bitacoraDosMsjTw'=>$mensaje_complete,
+                             'bitacoraDosOfertaId'=>$id_oferta,
+                             'bitacoraDosMoneyUsuario'=>$id_bonificacion,
+                             'bitacoraDosBitacoraUno'=>$bitacoraUnoData->bitacoraId,
+                             'bitacoraDosFechaPublicacion'=>date('Y-m-d H:i:s'),
+                             'BitacoraDosComisionRecibidaUsuario'=>$comision_usuario);
+        $this->redSocial->save_bitacora_dos($public_bita);
+    }
+
+    /**
+     * Metodo que se encarga de redireccion y cargar las vistas de las
+     * redes sociales las cuales se haran en un archivo externo a la maquetacion
+     * inicial para evitar que tengamos problemas cuando se acepta facebook y
+     * twitter
+     *
+     * @return pagina anterior
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function redes_sociales_usuarios($id=null)
+    {
+        $id = $this->session->userdata('id');
+        $data_type = $this->redSocial->data_name($this->session->userdata('id'));
+        //SE CARGA LA LIBRERIA DEL PAQUETE
+        /*if($data_type->statusEU == 0)
+        {
+            $this->load->add_package_path(APPPATH.'third_party/social_media_user/');
+            $this->load->library('facebooklib');
+        }
+        else
+        {*/
+            $this->load->add_package_path(APPPATH.'third_party/social_media_user/');
+            //$this->load->library('facebooklib');
+            $this->load->library('facebooklib2'); //PARTE NUEVA
+        //}
+
+        //OBTENER AL ACTUAL USUARIO Y GENERAR UN LINK DE SOLICITUD DE EXISTENCIA
+        //$user_link = $this->facebooklib->get_facebook_user();
+        $user_link = $this->facebooklib2->get_user();
+        //echo "holas amigos";
+        //var_dump($user_link);
+
+        if($this->tweet->logged_in())
+        {
+            $tokens = $this->tweet->get_tokens();
+            $flag = True;
+        }
+        else
+        {
+            $tokens = array();
+            $flag = False;
+        }
+        
+        //NOTIFICACIONES DE LOS USUARIOS EN EL HEADER
+        $datos['inboxT'] = $this->redSocial->inbox_total($this->session->userdata('id'), '1');//$this->nombre_usuario->id, '1');
+        $datos['notificaciones'] = $this->redSocial->get_all_notifications($this->session->userdata('id'));//$this->nombre_usuario->id);
+        // SE COMENTAR POR EL MOMENTO ESTA LINEA HASTA PROXIMO AVISO   
+        $datos['notificacion'] = $this->redSocial->get_notifications($this->session->userdata('id'));
+        //PARA EL HEADER QUE NO CAMBIE USUARIO
+        $usuarioSesion = $this->redSocial->data_name($this->session->userdata('id'));
+        $datos['usuarios2'] = $usuarioSesion;
+        $datos['localidades2'] = $this->redSocial->data_location($usuarioSesion->ciudad);  
+
+        $arreglo_pass = array(
+            'user_link'=>$user_link,
+            'facebook'=>$this->facebooklib2,//$this->facebooklib
+            'tokens'=>$tokens,
+            'flag'=>$flag,
+            'id'=>$id,
+            'tipo_usuario'=>$data_type
+        );
+		$redes = $this->redSocial->get_data_user($this->session->userdata('id'));
+		if($redes->statusEU == 0)
+		{
+			$header = $this->load->view('usuarios/header_login4', $datos, TRUE);
+            $content = $this->load->view('redessociales/social_user', $arreglo_pass, TRUE);
+		}
+		else
+		{
+           // $datos['usuariosU'] = $redes;
+           // $datos['localidadesN'] = $this->redSocial->data_location($this->nombre_usuario->ciudad);
+            // $data['inboxT'] = $this->Negocio->inbox_total($this->session->userdata('id'), '1');//$this->nombre_usuario->id, '1');
+            //$data['notificaciones'] = $this->Negocio->get_all_notifications($this->session->userdata('id'));//$this->nombre_usuario->id);
+            // SE COMENTA ESTA LINEA HASTA NUEVO AVISO $data['notificacion'] = $this->Negocio->get_notifications($this->session->userdata('id'));//$this->nombre_usuario->id);
+            $header = $this->load->view('negocios/header_login2',$datos, TRUE);
+            $content = $this->load->view('redessociales/social_user', $arreglo_pass, TRUE);
+        }
+        //se carga la vista
+        //$header = $this->load->view('usuarios/header_login4', $datos);
+        //$content = $this->load->view('redessociales/social_user', $arreglo_pass);
+        $this->load->view('main/template', array('header'=>$header,
+                                                 'content'=>$content));
+    }
+
+    /**
+     * Metodo que se usa para guardar los datos de los 
+     * tokens que se tienen de parte del usuario para que
+     * este pueda guardarlos al momento de aceptar las aplicaciones
+     * de las redes sociales
+     *
+     * @params int id del usuario
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+
+    public function guardar_t1($id)
+    {
+        $post = $this->input->post('Redes');
+        $post['socialUsuarioId'] = $id;
+        var_dump($post);
+        $total = count_number_social_data_user($id);
+        echo "hello: " . $total;
+        if($total != 0)
+        {
+            echo "hola";
+            $this->redSocial->update_data_user($post, $id);
+        }
+    }
+
+    public function guardar_tokens($id)
+    {	
+        $post = $this->input->post('Redes');
+        $post['socialUsuarioId'] = $id;
+        $total = count_number_social_data_user($id);
+        if($total == 0)
+        {
+            /*if(empty($post['uidFacebook']) && empty($post['tokenFacebook']))
+            {
+                $post['uidFacebook'] = '0';
+                $post['tokenFacebook'] = '0';
+            }*/
+            // forma nueva de guardar tokens de facebook
+            if(empty($post['tokenFacebook']))
+            {
+                $post['uidFacebook'] = '';
+                $post['tokenFacebook'] = '';
+            }
+            if(!empty($post['tokenFacebook']))
+            {
+                $post['uidFacebook'] = '';
+            }
+            //forma nueva en estado fin
+            if(empty($post['twitter_oauth']) && empty($post['twitter_oauth_secret']))
+            {
+                $post['twitter_oauth'] = '';
+                $post['twitter_oauth_secret'] = '';
+            }
+            $this->redSocial->save_tokens_user($post);
+			//redirect('http://www.pulzos.com/index.php/usuarios/perfil#http://www.pulzos.com/index.php/money/index/'.$this->session->userdata('id'));
+		    redirect(''.base_url().'index.php/usuarios/perfil#'.base_url().'index.php/money/index/'.$this->session->userdata('id'));
+        }
+        else
+        {
+            $this->redSocial->update_data_user($post, $id);
+			//redirect('http://www.pulzos.com/index.php/usuarios/perfil#http://www.pulzos.com/index.php/money/index/'.$this->session->userdata('id'));
+			redirect(''.base_url().'index.php/usuarios/perfil#'.base_url().'index.php/money/index/'.$this->session->userdata('id'));
+        }
+    }
+
+    /**
+     * Metodo que se usa para guardar los tokens de los negocios, esto para añadirlo com
+     * una nueva red social ligada a su perfil, pues en un futuro a la mejor se podra postear
+     * en sus muros directamente de pulzos pero por ahora se hace para poder habilitar sus
+     * promociones, en caso de que no agreguen red social no podran habilitar sus promociones
+     *
+     * @params int id del negocio como negocio
+     * @return void
+     * @author bkackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function guardar_company_tokens($id)
+    {
+        $post = $this->input->post('Redes');
+        if($post)
+        {
+            $valor = $this->redSocial->count_number_register($id);
+            if($valor == 0)
+            {
+                //echo "hola de nuevo";
+                $post['socialEmpresaUsuarioId'] = $id;
+                //var_dump($post);
+                $this->redSocial->save_tokens_company($post);
+				redirect(''.base_url().'index.php/negocios/perfil');
+            }
+            else
+            {
+                $this->redSocial->update_data_company($post, $id);
+				redirect(''.base_url().'index.php/negocios/perfil');
+            }
+        }
+    }
+
+    /**
+     * Metodo que se usa para poder realizar los datos que se
+     * necesitan para mostrar el formulario de los mensajes en
+     * las redes sociales y las ofertas que se llevaran acabo
+     * para las promociones que haran
+     *
+     * @params int id de los comentarios (NULL)
+     * @params int id la oferta (NULL)
+     *
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function primer_formulario($id1 = null, $id2 = null)
+    {
+        if(empty($id1) && empty($id2))
+        {
+            $datos['band'] = 0;
+            $this->load->view('redessociales/creacion_datos', $datos);
+        }
+        else
+        {
+            $datos['band'] = 1;
+            $datos['social_media'] = $this->redSocial->get_data_socialMedia($id1);
+            $datos['oferta_negocio'] = $this->redSocial->get_data_socialOferta($id2);
+            $this->load->view('redessociales/creacion_datos', $datos);
+        }
+    }
+
+    /**
+     * Metodo que se usa para la vista de los datos que se
+     * han ingresado para darle la vista al usuario una vez
+     * que ya haya llenado todos los campos del mismo
+     *
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function segunda_vista()
+    {
+        $this->load->view('redessociales/vista_forma');
+    }
+
+    /**
+     * Metodo que se usa para actualizar los valores de la activacion
+     * de la oferta que esta creando el usuario una vez que este lo
+     * haya aceptado como la dejo, en caso de que quede en cero, la oferta
+     * no estara activa para que los clientes puedan hacer sus bonificaciones
+     *
+     * @params int id de la oferta
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function actualizar_datos($id)
+    {
+        $this->redSocial->update_all_status_promo($this->session->userdata('idN'), '2');
+        $this->redSocial->update_status_promo($id, '1');
+    }
+
+    /**
+     * Metodo que se usa para poder realizar la vista de todas las ofertas activas que se
+     * tienen actualmente por la empresa, esto para que vea cuales son las bonificaciones que
+     * tendra que dar o por si quiere eliminar una promocion que ya no este vigente o que
+     * la quiera cambiar
+     *
+     * @params int id del negocio como negocio
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function ofertas_activas($id)
+    {
+        $datos['informacion'] = $this->redSocial->get_information_promotions($id);
+        $this->load->view('redessociales/ofertas_activas', $datos);
+    }
+
+    /**
+     * Metodo que se usa para poder eliminar todos los registros de las ofertas con los cuales
+     * ya no se podran ver pues en lugar de eliminar solo se cambiara por el momento de status
+     * a 2 para que estos puedan despues mostrar en estadisticas de los negocios y asi desde el
+     * inicio tener sus promociones
+     *
+     * @params int id de la oferta
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function eliminar_oferta($id)
+    {
+        $valores = $this->redSocial->get_data_geooffert($id);
+        $valores2 = $this->redSocial->get_data_planusergeo($valores->geotagGId);
+        //var_dump($valores2);
+        $this->redSocial->delete_data_showing('planesusuarios', 'planId', $valores2->planId);
+        $this->redSocial->delete_data_showing('scribbles_comments', 'scribbleId', $valores2->planScribbleId);
+        $this->redSocial->delete_data_showing('pulzos', 'pulzoId', $valores2->planEmpresaPulzoId);
+        $this->redSocial->delete_offert($id);
+        //var_dump($valores);
+        /*foreach($valores as $valor)
+        {
+            $this->redSocial->delete_offert($valor->ofertaOId);//$id);
+        }*/
+    }
+
+    /**
+     * Metodo que se usa para poder obtener los datos de las ofertas que han sido creadas por parte 
+     * del negocio desde el pulzos geotagging, por este medio se podra saber si se activa una oferta
+     * de nueva cuenta, se desactiva, o se elimina la misma por parte de la cual se puede realizar
+     * este proceso de administracion de ofertas activas
+     *
+     * @params int id del negocio
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function ofertas($id)
+    {
+        $datos['ofertas'] = $this->redSocial->get_all_data_promotions($id);
+        $this->load->view('redessociales/ofertas', $datos);
+    }
+
+    /**
+     * Metodo que se usa para poder actualizar las ofertas de los negocios en las cuales seran desactivadas
+     * para que los usuarios ya dejen de visualizar la oferta, mas bien que deje de estar activa la oferta que
+     * el negocio ya no desea tener activa y por lo tanto no se podran hacer bonificaciones con la misma
+     *
+     * @params int id de la oferta
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function desactivar_oferta($id)
+    {
+        $geotag = get_geotag_data($id);
+        $this->redSocial->update_ofert_desactivate($id);
+        $this->redSocial->update_status_scribble($geotag->geotagGId, '2');
+    }
+
+    /**
+     * Metodo que se usa para poder actualizar las ofertas de los negocios en las cuales sera activadas de
+     * nueva cuenta para que los usuarios puedan volver a visualizar la oferta, mas bien que deje de estar
+     * desactivada la oferta que el negocio ya no la desea tener desactivada y por lo tanto ya podran hacer las
+     * bonificaciones necesarias los usuarios
+     *
+     * @params int id de la oferta
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function activar_oferta($id)
+    {
+        $geotag = get_geotag_data($id);
+        $this->redSocial->update_ofert_activate($id);
+        $this->redSocial->update_status_scribble($geotag->geotagGId, '1');
+    }
+
+    /**
+     * Metodo que se usa para poder eliminar los tokens de facebook y asi
+     * el usuario pueda desligar su facebook de la plataforma pulzos y esta
+     * dejar de publicar ofertas en la misma
+     *
+     * @params int id del usuario
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function borrar_facebook($id)
+    {
+        
+        $this->redSocial->delete_facebook_tokens($id);
+    }
+
+    /**
+     * Metodo que se usa para poder realizar el proceso de borrar los
+     * datos de twitter que esten ligados del usuario, esto para que
+     * los usuarios eviten que se publiquen mensajes en twitter
+     * desde la plataforma pulzos
+     *
+     * @params int id del usuario
+     * @return void
+     * @author blackfoxgdl <ruben.alonso21@gmail.com>
+     **/
+    public function borrar_twitter($id)
+    {
+        $this->redSocial->delete_twitter_tokens($id);
+    }
+}

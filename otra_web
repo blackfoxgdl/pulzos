@@ -1,0 +1,25 @@
+<?php if($return_value == ''): ?>
+                                                <?php $url_sin = 'http://'.$link->enlace; ?>
+                                                <?php $url_information = http_information($url_sin); ?>
+                                                <div style="color: #8D6E98; text-decoration: none">
+                                                    <?php echo anchor($url_sin, $url_sin, array('target'=>'_blank')); ?>
+                                                </div>
+                                                <div>
+                                                    <?php echo utf8_encode(anchor($url_sin, $url_information['description'], array('target'=>'_blank', 'style'=>'color: #8D6E98; text-decoration: none'))); ?>
+                                                </div>
+                                            <?php else: ?>
+                                                <?php $url_sin = $link->enlace; ?>
+                                                <?php $url_information = http_information($url_sin); ?>
+                                                <br />
+                                                <div>
+                                                    <?php echo utf8_encode(anchor($url_sin, $url_information['title'], array('target'=>'_blank', 'style'=>'text-decoration: none; color: #8D6E98; font-weight: bolder'))); ?>
+                                                </div>
+                                                <br />
+                                                <div>
+                                                    <?php echo utf8_encode(anchor($url_sin, $url_information['description'], array('target'=>'_blank', 'style'=>'color: #8D6E98; text-decoration: none'))); ?>
+                                                </div>
+                                                <br />
+                                                <div style="color: #8D6E98; text-decoration: none">
+                                                    Url: <?php echo anchor($url_sin, $url_sin, array('target'=>'_blank')); ?>
+                                                </div>
+                                            <?php endif; ?>

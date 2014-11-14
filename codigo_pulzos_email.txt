@@ -1,0 +1,72 @@
+<html>
+                    <meta name="viewport" content="width=320, initial-scale=1, user-scalable=no">
+                    <head>
+                    <link media="only screen and (min-device-width: 481px)" href="http://www.pulzos.com/statics/css/ext/emails/iOSDevice.css" type= "text/css" rel="stylesheet">
+					</head>
+					<body>
+						<div style="width: 765px; height: 80px" id="cabeza_desktop">
+							<img src="http://www.pulzos.com/statics/img/mailPulzosCabecera.jpg" alt="Pulzos Rewards Network" />
+                        </div>
+                        <style type="text/css">
+                        @media screen and (max-device-width: 481px) {#cabeza_movil
+                            {
+                                background-image: url("http://www.pulzos.com/statics/img/mailPulzosCabeceraMovil.jpg");
+                                background-repeat: no-repeat;
+                                width: 320px;
+                                height: 100px;
+                                margin:auto;
+                            }
+
+                            #cabeza_desktop
+                            { 
+                                display:none;
+                            }}
+                        </style>
+                        <div id="cabeza_movil" align="left">
+                        </div>
+                        <style type="text/css">
+                        @media screen and (max-device-width: 481px) {#cabeza_movil
+                            {
+                                background-image: url("http://www.pulzos.com/statics/img/mailPulzosCabeceraMovil.jpg");
+                                background-repeat: no-repeat;
+                                width: 320px;
+                                height: 100px;
+                                margin:auto;
+                            }
+
+                            #cabeza_desktop
+                            { 
+                                display:none;
+                            }}
+                        </style>
+                        <style type="text/css">
+                            @media screen and (max-device-width: 481px) {#cuerpo_desktop { width: 320px; }}
+                        </style>
+						<div id="cuerpo_desktop" style="width: 765px">
+							Hola <strong>' . $n1 . '</strong><br /><br />
+							Bienvenido a Pulzos Rewards Network, la única plataforma que te da beneficios y 
+							te paga por divertirte y recomendar tus sitios favoritos.<br /><br />
+                            Ve ahora mismo a enlazar tus <a href="http://www.pulzos.com/inicio.php/redessociales/redes_sociales_usuarios/"' . $id . '">
+                            Redes Sociales</a> en tu perfil de Pulzos para que puedas accesar de inmediato a todos los 
+							beneficios que te ofrecemos.<br /><br />
+							Cada día más empresas se unen a nuestro programa de recompensas, por lo que 
+							no olvides comenzar a buscar nuestro logotipo cada vez que vayas a un restaurante, 
+							bar, spa … ¡o lo que sea! y preguntar “¿tienes Pulzos?” y así no pierdas ninguna 
+							oportunidad de ganar.<br /><br />
+							La diversión no termina en la web, ve a la App Store (hiperlink a la liga de la App) 
+							y descarga gratis Pulzos GeoTagging en tu Smartphone para que dejes tu huella por todo 
+							el mundo y comiences a etiquetar tus lugares favoritos y te enteres al momento de todos 
+							los beneficios disponibles dondequiera que estés.<br /><br />
+							Gracias por unirte a nuestra Comunidad,<br /><br />
+							<strong>Equipo Pulzos Rewards Network.</strong>
+                        </div>
+                        <style type="text/css">
+                            @media screen and (max-device-width: 481px) {#cuerpo_desktop { width: 320px; }}
+                        </style>
+                        <div id="pie_movil" align="left">
+                        </div>
+						<div style="width: 765px; height: 80px" id="pie_desktop">
+							<img src="http://www.pulzos.com/statics/img/mailPulzosPie.jpg" alt="" />
+						</div>
+					</body>
+				</html>

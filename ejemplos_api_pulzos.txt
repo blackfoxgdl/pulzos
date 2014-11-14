@@ -1,0 +1,49 @@
+Ejemplo de recuperar la variable de retorno de la plataforma de pulzos al sitio web
+
+//creacion y asignacion del valor regresado por url en la variable
+//@result = nombre de la variable que regresa el sitio pulzos
+
+$var1 = $_GET['result'];
+
+Ejemplo para mandar a llamar la clase de pulzos y accesar al metodo principal de la clase. Asi mismo se
+vera la forma en la cual se pueden accesar a los parametros retornados por dicha clase
+
+//recuperacion de variable regresada por el sitio pulzos
+//@result nombre de la variabl que regresa paypulzos
+$var1 = $_GET['result'];
+
+//Llamada al archivo de la clase de pulzos
+require_once('path_to_file/pulzos.php);
+
+//creacion de la instancia que se necesita para accesar a la clase de pulzos
+//se le pasara como parametro el valor que se retorna por parte de paypulzos
+$obj = new Pulzos($var1);
+
+//creacion de variable y asignacion de variable contenedora de valores para
+//manipulacion en comercio electronico
+
+$rsp = $obj->getValue();
+
+Ejemplo para poder mostrar la forma en como se puede accesar a los valores que se tienen
+actualmente retornados por la clase de pulzos directamente del Api Pulzos.
+
+//asignacion en la variable de todos los datos que se extraen desde el metodo de la
+//clase de pulzos
+
+$valor1 = $obj->getValue();
+
+//Manipulacion de la variable para obtener los 3 valores que se tienen disponibles, estos son
+//los valores que retorna Pulzos
+
+//mensaje de la transaccion, es el mensaje de exito o rechazo de la transaccion
+$resp1 = $valor['messageTransaction'];
+
+//numero de folio creado por pulzos. El numero de folio te ayudara a identificar la transaccion
+//que se realizo con el pago realizado desde pulzos
+$resp2 = $valor['noTransaction'];
+
+//Total de la transaccion realizada en la plataforma Pulzos. Es el total a pagar por parte del
+//usuario
+
+$resp3 = $valor['totalTransaction'];
+

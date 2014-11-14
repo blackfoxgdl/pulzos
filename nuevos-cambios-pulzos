@@ -1,0 +1,194 @@
+** nota todos son archivos pero cargados en el server de pruebas **
+
+***(YA) = SERVER DE PRUEBAS
+***(YA SERVER) = SERVER PULZOS
+
+/** NUEVOS CAMBIOS DE PULZOS **/
+
+-- views/template (YA)(YA SERVER)
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- usuarios/views/registro.php (YA)(YA SERVER)
+
+/** CAMBIOS 26 DE JUNIO **/
+
+-- helpers/avatar_helper (YA)(YA SERVER)
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- usuarios/models/usuario (YA)(YA SERVER)
+
+/** CAMBIOS 27 DE JUNIO **/
+
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- usuarios/models/usuario (YA)(YA SERVER)
+-- moviles/controllers/moviles (YA)(YA SERVER)
+-- moviles/models/movil (YA)(YA SERVER)
+-- usuarios/view/headers (YA)(YA SERVER)
+
+/** CAMBIOS 29 DE JUNIO **/
+
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- usuarios/views/main.php (YA)(YA SERVER)
+
+/** CAMBIOS 2 DE JULIO **/
+
+-- statics/img/empresa_boton.png (YA)(YA SERVER)
+-- statics/img/user_boton.png (YA)(YA SERVER)
+-- statics/img/logo_home.png (YA)(YA SERVER)
+-- usuarios/view/header_main.php (YA)(YA SERVER)
+-- views/main/main_template.php (YA)(YA SERVER)
+-- statics/css/ext/noregistro.css (YA)(YA SERVER)
+-- negocios/views/crear.php (YA)(YA SERVER)
+-- statics/img/FBConnect.png (YA)(YA SERVER)
+-- statics/img/boton_tutorial.png (YA)(YA SERVER)
+-- statics/img/appstore_logo.png (YA)(YA SERVER)
+-- statics/img/googleplay_logo.png (YA)(YA SERVER)
+-- statics/img/user_Badge.png (YA)(YA SERVER)
+-- statics/img/empresa_badge.png (YA)(YA SERVER)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+
+/** CAMBIOS 3 DE JULIO **/
+
+-- users/views/edit_personales.php (YA)(YA SERVER)
+-- statics/img/old_users.png (YA)(YA SERVER)
+-- users/views/perfil (YA)(YA SERVER)
+-- helpers/status_helper (YA)(YA SERVER)
+-- usuarios/views/editar_perfil (YA)(YA SERVER)
+-- ALTER TABLE `negocios` ADD `negocioEsSucursal` INT NOT NULL DEFAULT '0' COMMENT '0 - negocio matriz, 1 - negocio sucursal' (YA)(YA SERVER)
+-- usuarios/controller/usuarios (YA)(YA SERVER)
+-- negocios/controller/negocios (YA)(YA SERVER)
+-- negocios/views/form_sucursal (YA)
+
+/** CAMBIOS 4 DE JULIO **/
+
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- negocios/views/form_sucursal (YA)
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- usuarios/views/headers (YA)(YA SERVER)
+-- negocios/views/headers (YA)(YA SERVER)
+
+/** CAMBIOS 5 DE JULIO **/
+
+-- eliminar los registros: (tablas a eliminar los dados de alta: usuarios, negocios, albumsnegocios, imagennegocios, imagenes_thumb, scribble_comments, apadrina_negocio, alta_negocio)
+-- moviles/controllers/moviles (YA)(YA SERVER)
+-- moviles/models/movil (YA)(YA SERVER)
+	
+/**CAMBIOS 6 DE JULIO **/
+
+-- negocios/views/perfil (YA)(YA SERVER)
+-- negocios/views/miperfil (YA)(YA SERVER)
+
+/** CAMBIOS 9 DE JULIO **/
+
+-- negocios/views/inicio (YA)(YA SERVER)
+-- UPDATE `negocios` SET `negocioImagenId` = '0' (YA)(YA SERVER)
+-- negocios/views/contract (YA)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- negocios/models/negocio (YA)(YA SERVER)
+-- negocios/views/contract_text (YA) 
+-- negocios/views/download_app (YA)
+
+/** CAMBIOS 10 DE JULIO **/
+
+-- negocios/views/perfil (YA)(YA SERVER)
+-- negocios/views/inicio (YA)(YA SERVER)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- moviles/controllers/moviles (YA)(YA SERVER)
+-- usuarios/controllers/usuarios (YA)(YA SERVER)
+-- statics/img/alreadymembers.png (YA)(YA SERVER)
+-- statics/img/businesscenter.png (YA)(YA SERVER)
+-- usuarios/views/header_main (YA)(YA SERVER)
+-- usuarios/views/registro (YA)(YA SERVER)
+-- negocios/views/header_main (YA)(YA SERVER)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- negocios/views/crear (YA)(YA SERVER)
+
+/** CAMBIOS 16 DE JULIO **/
+
+NOTA: CAMBIAR LAS REDIRECCIONES DE USUARIOS DE TEST AL SERVER DE PRODUCCION
+NOTA: CAMBIAR EL APPID DE LA APLICACION DE FACBEOOK PARA EL CONNECT
+-- usuarios/controllers/usuarios (YA)
+-- usuarios/views/registro (YA)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- negocios/views/crear (YA)(YA SERVER)
+-- negocios/views/inicio (YA)
+-- money/controllers/money (YA)
+
+
+/** CAMBIOS 17 DE JULIO **/
+
+-- negocios/views/crear (YA)(YA SERVER)
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- negocios/views/create_inteliguia (YA)(YA SERVER)
+-- negocios/models/negocio (YA)(YA SERVER)
+-- usuarios/controllers/usuarios (YA)
+-- usuarios/models/usuario (YA)
+-- usuarios/views/intento (YA)
+-- CHECAR LOS NUEVOS CAMPOS DE TEXTO QUE SE TENDRIAN QUE AGREGAR A LA BASE DE DATOS (YA)
+
+/** CAMBIOS 18 DE JULIO **/
+
+-- negocios/controllers/negocios (YA)(YA SERVER)
+-- ALTER TABLE `negocios` ADD `negocioAddress2` VARCHAR( 500 ) NULL DEFAULT '0' COMMENT 'direccion 2 del negocio que se dara de alta' AFTER `negocioDireccion` ,
+   ADD `negocioZipCode` VARCHAR( 50 ) NULL DEFAULT '0' COMMENT 'codigo zip del negocio' AFTER `negocioAddress2` ,
+   ADD `negocioCity` VARCHAR( 500 ) NULL DEFAULT '0' COMMENT 'ciudad del negocio registrado' AFTER `negocioZipCode` (YA)(YA SERVER)
+-- helpers/cyp_helper (YA)(YA SERVER)
+-- inboxusuarios/views/index (YA)
+
+/********************************************* CAMBIOS DE DATOS PARA LO ANTES POSIBLE ***********************************************************/
+
+> 1.      En la pagina de inicio, cambiar “Business Center” por “Register your Business” (YA)
+> 
+> 2.      En la parte de negocios, borrar la parte superior en amarillo donde dice “aun no estas inscrito, regístrate” (YA)
+> 
+> a)      Name of business (YA)
+> 
+> b)      Address (Address line 1, address line 2, zip code, city) Cada uno con su campo individual (YA SOLAMENTE EL INDIVIDUAL ADD A LA BASE DE DATOS)
+> 
+> c)      Borrar giro y subgiro (YA)
+> 
+> d)      E-mail address (YA)
+> 
+> e)      Confirm E-mail address (YA)
+> 
+> f)      Password (YA)
+> 
+> g)      Confirm Password (YA)
+> 
+>  
+> 
+> 3.       “Register” donde dice “Registrate” (YA)
+> 
+> 4.       Borrar “Already a member, sing (deberia ser sign) in here”. (YA)
+> 
+> En cuanto tenga el contrato te lo mando para que lo puedan subir.
+
+/**********************************************************************************
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ **************************************************************************************/
+
+** controlador y modelo de moviles
+** ALTER TABLE `usuarios` ADD `usuariosCode` INT NOT NULL DEFAULT '0' COMMENT 'field where the user know some code for identificate un the platform',
+ADD `usuariosStatusActivado` INT NOT NULL DEFAULT '0' COMMENT 'status for know id the user has active the account for post 1- active 0 - desactive'
+**ALTER TABLE `usuarios` CHANGE `usuariosCode` `usuariosCode` VARCHAR( 1000 ) NOT NULL DEFAULT '0' COMMENT 'field where the user know some code for identificate un the platform'
+** controlador y modelo de usuarios
+** ALTER TABLE `usuarios` ADD `usuariosFBuId` VARCHAR( 1000 ) NOT NULL COMMENT 'uid for check that know if the user exists'
+** vista usuarios registro.php
+** controlador y modelo de redessociales

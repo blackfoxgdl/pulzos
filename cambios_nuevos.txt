@@ -1,0 +1,805 @@
+NUEVOS CAMBIOS
+
+-- controller usuarios (YA)
+-- controller negocios (YA)
+-- recuperar views usuario (YA)
+-- perfil views usuarios (YA)
+-- statics index.css (YA)
+-- modelos usuarios (YA)
+-- modelos negocios(YA)
+-- imagen del boton (YA)
+-- planesusuarios controller (YA)
+-- planesusuarios modelo (YA)
+-- notificaciones controller (YA)
+-- notificaciones modelo (YA)
+-- social_user views (YA)
+-- logos redes sociales (YA)
+-- agregar dos tablas bitacora (YA)
+-- controlador y modelo de money (YA)
+-- controlador y modelo de redessociales (YA)
+-- social_user views (YA)
+-- planesusuarios/ver_todos.php y planesusuarios/ver_planes.php (YA)
+-- views/main/template.php  (YA)
+-- money_formulario en money vista (YA)
+-- apipulzos helper (YA)
+-- recuperar usuarios views (YA)
+-- passworder helper (YA)
+-- recovery view usuario (YA)
+-- boton recuperar imagen (YA)
+-- ingreso view usuarios (YA)
+-- views crear negocios (YA)
+-- views registro usuarios (YA)
+-- status_helper views (YA)
+-- ver todos views (YA)
+
+2173
+490
+
+/** NUEVOS CAMBIOS DE LUNES 19 AL JUEVES 22 **/
+-- email helper (YA)
+-- planesusuarios controller (YA)
+-- vista busqueda en usuarios (YA)
+-- personales views usuarios (YA)
+-- ver_todos planesusuarios views (YA)
+-- ver_planes planesusuarios views (YA)
+-- moviles controllers
+-- header_login views (YA)
+-- header_login2 views (YA)
+-- header_login3 views (YA)
+-- header_login4 views (YA)
+-- actualizar_header views (YA)
+-- negocios controllers (YA)
+-- personales views negocios (YA)
+
+/** NUEVOS CAMBIOS DE MARTES 20 AL JUEVES 22 **/
+-- ver inboxusuarios views (YA)
+-- ver_siguientes planesusuarios views (YA)
+-- planesusuarios controllers (YA)
+-- planesusuarios modelo (YA)
+-- negocios perfil views (YA)
+
+/** NUEVOS CAMBIOS DE MIERCOLES 21 AL JUEVES 22 **/
+-- crear views negocios (YA)
+-- ver_planes views planesnegocios (YA)
+-- modelo y controlador de planesnegocios (YA)
+-- ver_todos views planesusuarios (YA)
+-- index.css statics/css/ext (YA)
+-- ver_siguientes views planesusuarios (YA)
+-- header_login views usuarios (YA)
+-- actualizar_header views usuarios (YA)
+-- notificaciones controlador
+-- ayuda_pulzos views notificaciones
+
+/** NUEVOS CAMBIOS JUEVES 22 **/
+-- header_login usuarios views (YA)
+-- registro usuarios views (YA)
+-- perfil usuarios views (YA)
+-- ver_todos planesusuarios views (YA)
+-- ver_siguientes planesusuarios views (YA)
+-- eliminar.png en statics/img (YA)
+-- editar_datos vista de negocios (YA)
+-- reload_comments planesusuarios views (YA)
+-- ver_planes planesusuarios views (YA)
+-- ver_siguientes_planes planesusuarios views (YA)
+-- ver_personal planesusuarios (YA)
+-- peril negocios views (YA)
+-- miperfil negocios views (YA)
+-- social_user redessociales views (YA)
+
+/**NUEVOS CAMBIOS MARTES 27 **/
+-- imágenes controlares (YA)
+-- checar con alberto los nombres de las imágenes, vengan sin acentos estas son las thumbnail (YA)
+-- avatar_helper helpers (YA)
+-- ver_todos planesusuarios views (YA)
+-- ver_siguientes planesusuarios views (YA)
+-- ver_planes planesusuarios views (YA)
+-- ver_siguientes_planes planesusuarios views (YA)
+-- reload_comments planesusuarios views (YA)
+
+/** NUEVOS CAMBIOS JUEVES 29 **/
+-- perfil usuarios views (YA)
+-- amigos_nuevos usuarios views (YA)
+
+/** NUEVOS CAMBIOS LUNES 2 **/
+-- ver_personal planesusuarios views (YA)
+-- ver_todos planesusuarios views (YA)
+-- ver_planes planesusuarios views (YA)
+-- ver_siguientes planesusuarios views (YA)
+-- ver_siguientes_planes planesusuarios views (YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 4 **/
+-- header_login usuarios views (YA)
+-- header_login2 usuarios views (YA)
+-- header_login3 views usuarios (YA)
+-- header_login4 usuarios views (YA)
+-- actualizar_header usuarios views (YA)
+-- new_index css statics (YA)
+-- status_helper helpers (YA)	
+-- main_template views main (YA)
+
+/** NUEVOS CAMBIOS JUEVES 5 **/
+-- EN REPO YA --
+moneyback.php (modelo): (YA)
+	modifique:
+		get_moneyUsuario()
+
+	agregue:
+		insert_totalGanado()
+		get_totalGanado()  
+		get_totalGanadoUsuario()
+
+money_formulario.php(vista) (YA)
+
+
+/** NUEVOS CAMBIOS LUNES 9 **/
+-- ext/index.css en index (YA)
+-- modulo connects completo
+-- counters helper (YA)
+-- boton_Aceptar_Gris.png (YA)
+
+/** NUEVOS CAMBIOS MARTES 17 **/
+-- main template (YA)
+-- modulo completo developers (YA)
+-- views inicio en negocios (YA)
+-- controllers negocios (por verse) (YA)
+-- views ver_todos planesusuarios (YA)
+-- helper counters (YA)
+-- img/logo-blancoAPI.png (YA)
+-- controllers money (YA)
+-- money modelo (YA)
+-- money/views busqueda_negocios (YA)
+-- money/views money_formulario (YA)
+-- controllers redessociales redes sociales (COMENTADO PUBLICACIONES EN FACEBOOOK Y TWITTER POR EL MOMENTO)(YA AL SERVER PRODUCCION)(YA)
+-- model redessociales redes sociales (YA)
+
+/** NUEVOS CAMBIOS JUEVES 19 **/
+-- main template views (YA)
+-- statics/css/ext/ index.css (YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 18 **/
+-- social_media_user/libraries/facebooklib2 third party (NO CARGAR AL SERVER DE PULZOS)
+-- redessociales/views social_user (SOLO DEPLOYMENT SERVER)
+-- money_formulario money (SOLO DEPLOYMENT SERVER MI ARCHIVO)
+-- controllers redessociales (SOLO DEPLOYMENT SERVER)(YA SERVER DE PRODUCCION)
+-- viewsver inboxusuarios (SOLO DEPLOYMENT SERVER)(YA SERVER DE PRODUCCION)
+-- redes sociales controller (ERROR EN LA PARTER DE ACTUALIZAR EL HISTORIAL)
+-- ver inboxn (SOLO DEPLOYMENT)
+
+/** NUEVOS CAMBIOS VIERNES 20 **/
+-- controlador de negocios (YA EN DE DESARROLLO SERVER)(YA)
+-- vista inicio (YA EN DE DESARROLLO SERVER )(YA)
+-- views/index transacciones (YA)(YA)
+-- views/money money_formulario (YA)(YA)
+
+/** NUEVOS CAMBIOS LUNES 23 **/
+-- modulo completo developers (YA DEPLOYMENT SERVER) (YA)
+-- main template (YA DEPLOYMENT SERVER) (YA)
+-- statics/img logo-blancoAPI.jpg (YA DEPLOYMENT SERVER) (YA)
+-- statics/img APIhomeArt.jpg (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/views header_login (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/views header_login2 (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/views header_login3 (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/views header_login4 (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/views actualizar_header (YA DEPLOYMENT SERVER) (YA)
+-- statics/css/ext redondeo.css (YA DEPLOYMENT SERVER) (YA)
+-- modulo completo connects (YA DEPLOYMENT SERVER) (YA)
+-- usuarios/controllers usuarios (YA DEPLOYMENT SERVER) (PENDIENTE)
+
+/** NUEVOS CAMBIOS MIERCOLES 25 **/
+-- transacciones/views pendientes_movs (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/controllers controlador (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/models modelo (YA DEPLOYMENT SERVER) (YA)
+-- money/views money_formulario (YA DEPLOYMENT SERVER) (YA)
+-- helpers counters (YA DEPLOYMENT SERVER) (YA)
+
+/** NUEVOS CAMBIOS JUEVES 24 **/
+-- helpers emails_helper (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/views edo_cuenta (YA DEPLOYMENT SERVER) (YA)
+-- parte del administrador de pulzos para checar cuentas (YA DEPLOYMENT SERVER) (YA)
+
+/** NUEVOS CAMBIOS LUNES 30 **/
+-- controllers redessociales.php (YA DEPLOYMENT SERVER) (PENDIENTE)(NO SUBIR)
+-- transacciones/views desglose	(YA DEPLOYMENT SERVER) (YA)
+-- connects/views redireccion (YA DEPLOYMENT SERVER) (YA)
+-- transacciones model (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/views tranferencias (YA DEPLOYMENT SERVER) (YA)
+ 
+/** NUEVOS CAMBIOS MARTES 31 **/
+-- transacciones/views todas (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/controllers controlador (YA DEPLOYMENT SERVER) (YA)
+-- counters helpers (YA DEPLOYMENT SERVER) (YA)
+
+/** NUEVOS CAMBIOS JUEVES 2 **/
+-- helpers counter helpers (YA DEPLOYMENT SERVER) (YA)
+-- redessociales/views ofertas (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/views retiro (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/views transferencias (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/controllers transacciones (YA DEPLOYMENT SERVER) (YA)
+-- transacciones/models transacciones (YA DEPLOYMENT SERVER) (YA)
+-- helpers emails helper (YA DEPLOYMENT SERVER) (YA)
+
+/** NUEVOS CAMBIOS MARTES 7 **/
+-- controllers usuarios/controllers (YA)(YA DEPLOYMENT SERVER)
+-- helpers email helper (YA)(YA DEPLOYMENT SERVER)
+-- statics/img mailpulzosCabeceraMovil (YA)(YA DEPLOYMENT SERVER)
+-- statics/img mailPulzosPieMovil (YA)(YA DEPLOYMENT SERVER)
+-- statics/css/ext/ folder emails (YA)(YA DEPLOYMENT SERVER)
+
+/** NUEVOS CAMBIOS MIERCOLES 8 **/
+-- controllers planesusuarios/controllers (YA)(YA DEPLOYMENT SERVER)
+-- helper email helper (YA)(YA DEPLOYMENT SERVER)
+-- models planesusuarios models (YA)(YA DEPLOYMENT SERVER)
+-- controllers amigos/controllers (YA)(YA DEPLOYMENT SERVER)
+-- controllers movil/controllers (YA)(YA DEPLOYMENT SERVER)
+-- models movil/models (YA)(YA DEPLOYMENT SERVER)
+
+/** NUEVOS CAMBIOS JUEVES 9 Y VIERNES 10 **/
+-- usuarios views/ingreso(YA DEPLOYMENT SERVER)
+-- helpers emails/helper(YA DEPLOYMENT SERVER)(YA)
+-- controllers moviles/controllers(YA DEPLOYMENT SERVER)(YA)
+-- models moviles/models(YA DEPLOYMENT SERVER) (YA)
+-- negocios views/inicio (YA)(YA DEPLOYMENT SERVER)(YA)
+---------------------------------- NOTA: status se cambiara en caso de que ya se haya depositado a la empresa de parte de pulzos -----------------------------
+-- helpers counters/helper(YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS LUNES 13 **/
+-- controller/money controlador (YA DEPLOYMENT SERVER)(YA)
+-- helpers email/helper (YA DEPLOYMENT SERVER)(YA)
+-- models/money modelo/moneyback (YA DEPLOYMENT SERVER)(YA)
+-- models/movil modelo (YA DEPLOYMENT SERVER)(YA)
+-- controllers/movil controlador (YA DEPLOYMENT SERVER)(YA)
+-- controller/negocios controlador (YA DEPLOYMENT SERVER)(YA)
+-------------------------------------- NOTA: CHECAR QUE LOS CORREOS ELECTRONICOS NO SE REPITAN TAMPOCO EN LAS EMPRESAS -----------------------------------
+-- planesusuarios/controller controlador (YA DEPLOYMENT SERVER)(YA)
+-- planesusuarios/models modelo (YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS MARTES 14 **/
+-- controllers/inboxusuarios controlador (YA DEPLOYMENT SERVER)(YA)
+-- inboxusuarios/views respuesta (YA DEPLOYMENT SERVER)(YA)
+-- controllers/negocios controlador (YA DEPLOYMENT SERVER)(YA)
+-- views/negocios inicio (YA DEPLOYMENT SERVER)(YA)
+-- models/negocios modelo (YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 15 **/
+-- controllers/moviles controladores (YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS JUEVES 16 **/
+-- redessociales/models modelo
+-- anexo en carpeta library archivo email_desktop.php para app de escritorio (YA DEPLOYMENT SERVER)(YA)
+-- helpers/emails helper (YA DEPLOYMENT SERVER)(YA)
+-- controllers transacciones/controlador (YA DEPLOYMENT SERVER)(YA)
+-- views transacciones/ index.php (YA DEPLOYMENT SERVER)(YA)
+-- bonificacion/bonificacion_aceptada (YA DEPLOYMENT SERVER)(YA)
+-- counters/helpers (YA DEPLOYMENT SERVER)(YA)
+-- controlers/redessociales controlador (YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS VIERNES 17 **/
+-- controllers/redessociales controlador (YA DEPLOYMENT SERVER)(YA)
+-- helpers todos (YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS LUNES 20 DE FEBRERO **/
+-- controllers/redessociales controlador (YA DEPLOYMENT SERVER) ---------------------------> PENDIENTE (NO SE SUBE POR EL MOMENTO)
+-- views/transacciones index.php ---------------------------> PENDIENTE
+
+/** NUEVOS CAMBIOS MARTES 21 DE FEBRERO **/
+-- controllers/transacciones controlador (YA DEPLOYMENT SERVER)(YA)
+-- models/transacciones modelo (YA DEPLOYMENT SERVER)(YA)
+-- statics/css/ext jquery.confirm.css(YA DEPLOYMENT SERVER)(YA)
+-- statics/js confirm.jquery.js (YA DEPLOYMENT SERVER)(YA)
+-- statics/img/confirm.jquery carpeta(YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 22 DE FEBRERO **/
+-- CARPETA REDESSOCIALES (YA)
+-- cambiar controlador redessociales en get_twitter_bonificationU las redirecciones (YA)
+-- SUBIR TODOS LOS ARCHIVOS MENOS EL DE REDES SOCIALES (YA)
+-- controllers/redessociales controlador "redirecciones de twitter (YA)
+-- money/views money_formulario (YA)
+-- inboxusuarios/views ver (YA)
+
+/** NUEVOS CAMBIOS VIERNES 24 DE FEBRERO **/
+-- money/views money_formulario (YA)
+-- redessociales/intermedio.php (YA)
+-- inboxusuarios/views ver (YA)
+-- redessociales/index.php (YA)
+-- negocios/controllers controlador (metodo crear)(YA DEPLOYMEN SERVER)(YA)
+-- negocios/views crear.php (agrego ciudad)(YA DEPLOYMEN SERVER)(YA)
+-- seguidores/controllers controlador (agregar funcion)(YA DEPLOYMEN SERVER)(YA)
+-- seguidores/views negocio_x_ciudad (YA DEPLOYMEN SERVER)(YA)
+-- seguidores/models modelos (agregar mostrar_negocios)(YA DEPLOYMEN SERVER)(YA)
+-- usuarios/views perfil (negocios ver todos)(YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS LUNES 27 DE FEBRERO **/
+-- inboxusuarios/views ver (AGREGAR TEXTO)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/money controlador (AGREGAR EMAIL AL ADMIN)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/redessociales controlador (AGREGAR EMAIL ADMIN)(YA DEPLOYMEN SERVER)(YA)
+-- modules bonificacion/bonificacion_aceptada (YA DEPLOYMEN SERVER)(YA)
+-- js/desktop.js (YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS MARTES 28 DE FEBRERO **/
+-- money/views money_formulario	(agregar el iva)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/money controlador (AGREGAR CORREO NUEVO)(YA)
+-- controllers/redessociales controlador (AGREGAR CORREO NUEVO)(YA)
+-- bonificaciones/bonificacion_aceptada (YA)
+-- solicitudes/solicitud (YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 29 DE FEBRERO **/
+-- emails helper (QUITAR ACENTOS)(YA DEPLOYMEN SERVER)(YA)
+-- money/views money_formulario (AGREGAR IVA USUARIOS)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/money controlador (DESHABILITAR CORREO A MAURICIO) --------------------> PENDIENTE
+-- controllers/redessociales controlador (DESHABILITAR CORREO A MAURICIO) ------------> PENDIENTE
+-- controllers/models redessociales (FUNCIONES AGREGAR IE) ---------------------------> PENDIENTE
+-- crear tabla bonificaciones_ie (YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS JUEVES 1 DE MARZO **/
+-- controllers/redessociales controlador (CAMBIO DE FUNCIONES PARA DATOS EMPRESA AL BONIFICAR)(YA DEPLOYMENT SERVER)(YA)
+
+/** NUEVOS CAMBIOS VIERNES 2 DE MARZO **/
+-- helpers status herper (YA DEPLOYMEN SERVER)(YA)
+-- helpers counters helper (YA DEPLOYMEN SERVER)(YA)
+-- inboxusuarios views ver (PENDIENTE DE GOYO) ---------------------------> PENDIENTE
+
+/** NUEVOS CAMBIOS 5 y 6 DE MARZO **/
+-- controllers/negocios controlador (YA DEPLOYMEN SERVER)(YA)
+-- negocios/views inicio.php (YA DEPLOYMEN SERVER)(YA)
+-- models negocios modelo (YA DEPLOYMEN SERVER)(YA)
+-- checar el controlador de imagenes (YA DEPLOYMEN SERVER)(YA)
+-- imagenes del wall inicio de empresas (YA DEPLOYMEN SERVER)(YA)
+-- agregar el folder img_geotag_company con permisos 0777 (YA DEPLOYMEN SERVER)(YA)
+-- controllers/moviles controlador (obtener_tags_principales_v2) (YA DEPLOYMEN SERVER) ---------------------------> PENDIENTE
+-- models/moviles modelo (varios metodos con terminacion v2) (YA DEPLOYMEN SERVER) ---------------------------> PENDIENTE
+
+/** NUEVO CAMBIOS MIERCOLES 7 DE MARZO **/
+-- models/moviles modelo(FUNCION FALTANTE)(YA DEPLOYMEN SERVER) ---------------------------> PENDIENTE
+-- negocios/views inicio.php (VALIDACIONES)(YA DEPLOYMEN SERVER)(YA)
+-- negocios/controllers controlador (QUITAR VAR_DUMP)(YA DEPLOYMEN SERVER)(YA)
+-- redessociales/models modelo (CAMBIAR STATUS DE 0 A 2 EN DESACTIVAR Y OFERTAS)(YA DEPLOYMEN SERVER)(YA)
+	(CHECAR DBS EN CUANTO A LAS OFERTAS ACTIVAS Y DESACTIVADAS)
+-- redessociales/views ofertas (STATUS DE ACTIVACION Y DESACTIVACION)(YA DEPLOYMEN SERVER)(YA)
+-- imagenesnegocios/controllers controlador (no actualiza imagen avatar)(YA)
+-- imagenesnegocios/models modelo (no actualiza imagen avatar)(YA DEPLOYMEN SERVER)(YA)
+-- imagenesnegocios/views crear(no actualiza imagen avatar)(YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVO CAMBIO JUEVES 8 DE MARZO **/
+-- negocios/views header_login (ALGUNAS VALIDACIONES)(YA DEPLOYMEN SERVER) ---------------------------> PENDIENTE
+-- imagennegocios/controllers controlador (FUNCION DE CONTROLADOR IMAGEN)(YA DEPLOYMEN SERVER)(YA)
+-- negocios/views inicio (YA DEPLOYMEN SERVER)(YA)
+-- imagennegocios/models modelo (AGRGEAR FUNCION ACTUALIZAR IMG)(YA DEPLOYMEN SERVER)(YA)
+-- helpers counters (AGREGAR FUNCION)(YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS LUNES 12 DE MARZO **/
+-- usuarios/views perfil.php (cambios en barra lateral negocios)(YA DEPLOYMEN SERVER)(YA)
+-- statics/img mapa (YA DEPLOYMEN SERVER)(YA)
+-- statucs/img nomapa(YA DEPLOYMEN SERVER)(YA)
+-- statics/ img seguir (YA DEPLOYMEN SERVER)(YA)
+-- statics/img noseguir (YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS MARTES 13 DE MARZO **/
+-- helpers counters_helper (AGREGAR FUNCION)(YA DEPLOYMEN SERVER)(YA)
+-- statics/desktop/modules/ofertas vs_oferta.php (YA)
+-- statics/desktop/modules/ofertas ofertas.php (YA)
+-- statics/desktop/library/js desktop.js (YA)
+-- statics/desktop/library/ get_ofertas (YA)
+-- statics/desktop/modules/bonificacion formulario (YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 14 DE MARZO **/
+-- controllers/negocios controlador (YA DEPLOYMEN SERVER)(YA)
+-- negocios/views inicio (YA DEPLOYMEN SERVER)(YA)
+-- money/views money_formulario (YA DEPLOYMEN SERVER)(YA)
+-- money/views busqueda_oferta (YA DEPLOYMEN SERVER)(YA)
+
+/** NUEVOS CAMBIOS MARTES 20 DE MARZO **/
+-- usuarios/views edit_ubicacion_header (AGREGAR ARCHIVO)(YA DEPLOYMEN SERVER)(YA)
+-- usuarios/views edit_ubicacion (CAMBIOS EN FUNCIONALIDAD)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/usuarios controlador (METODO DE UBICACION USUARIO)(YA DEPLOYMEN SERVER)(YA)
+-- models/usuarios modelo (agregar funcion)(YA DEPLOYMEN SERVER)(YA)
+-- views/planesusuarios ver_todos(line 557)(YA DEPLOYMEN SERVER)(YA)
+-- views/usuarios update_options_company(LINK A ACTUALIZAR Y AGREGAR ARCHIVO)(YA DEPLOYMEN SERVER)(YA)	
+-- views/usuarios perfil (AGREGAR DOS DIVS)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/usuarios controlador (METODO DE UBICACION USUARIO)(YA DEPLOYMEN SERVER)(YA)
+-- usuarios/views edit_ubicacion (CAMBIOS EN FUNCIONALIDAD)(YA DEPLOYMEN SERVER)(YA)
+-- usuarios/views edit_ubicacion_header (AGREGAR ARCHIVO)(YA DEPLOYMEN SERVER)(YA)
+-- controllers/seguidores controlador (CORREGIR VAR)(YA DEPLOYMEN SERVER)(YA)
+-- seguidores/views negocio_x_ciudad (FORMATO VAR MSG)(YA DEPLOYMEN SERVER)(YA)
+-- subir todo el modulo transacciones (FALTA LO DE LA FICHA DE DEPOSITO)(YA)
+-- se agrego la libreria del confirm en la app de escritorio en js (YA)
+
+/** NUEVOS CAMBIOS MIERCOLES 21 DE MARZO **/
+-- statics/pulzos_desktop/library/get_numeroDeposito (ADD LINES FOR SAVE #REFER)(YA)
+-- statics/pulzos_desktop/js/desktop.js (FUNCIONALIDAD BOTON DEPOSITAR)(YA)
+-- statics/pulzos_desktop/modules/depositos/depositos (CAMBIO DE FUNCIONALIDAD BOTON)(YA)
+-- transacciones/views index (CAMBIOS DE TEXTOS DE CONFIRM)(YA DEPLOYMENT SERVER)(YA)
+-- se agrego la libreria del confirm en la app de escritorio en css (YA)
+-- negocios/views ubicacion-e (AGREGAR MAPA)(YA DEPLOYMEN SERVER)(YA)
+
+
+
+
+
+
+
+
+NOTA: CHECAR LA PARTE DE ACTUALIZACIOND E THUMBNAIL EN MODULO DE NEGOCIOS
+NOTA: CHECAR ENVIO DE CORREOS EN LA PARTE DE NEGOCIO A USUARIO
+NOTA:CHECAR LA RUTA DE NEGOCIOS UNA VEZ QUE SE HAYA CARGADO TODO ESTO
+
+	
+
+
+
+RACKSPACE 001-877-934-0407
+
+
+
+
+
+
+
+
+
+
+
+
+
+dac92639ae7a0c413c6d66cd43d29d37dcae26de
+
+
+	      
+
+
+
+
+
+
+
+
+LAST URL FACEBOOK APP
+http://www.pulzos.com/inicio.php/redessociales/redes_sociales_usuarios/
+
+
+
+ -- LOS PRIMERO 3 TOKENS DE PRUEBAS LOS OTROS 3 YA SE DE DONDE SON --
+AAABkaeMsNgkBAJSbdAx21KP1fxF6eY5J0LQjVHsRAyrGOrlZB801qsROAhroj2KMCZA08wRTJ4g8ZAeVitp9NC9XQB5Go8ZD
+244309856-Us89eGG79nqShHesfDyX9ypzMjuyMomiQ2sFNzdF
+ITU2VANeQTIolevzg4Z1lUKeyXTy2xHVoYqEzaKoU
+
+AAABft5IueeoBAGin1tL129AuCvg6HM6qPTo58ZCnOdUqyhrMViWZAPU8hSfUccBoKwbjtQ25UPEtBrVFk9o6cz1tAb1soZD ---> FACEBOOK
+
+244309856-d5iFZutPZPB3hdYWq4s2mSs7v69nJxIvWlXMT9rl --->twitter_oauth
+ffhYOZOxMcDxGPa3b5DRTvEP6xMljVoJY2Wie5VXEw ---> twitter_oauth_secret
+
+
+
+
+
+
+
+
+
+DATOS GRUPO VENEMES: 949 895
+
+hausser_101@hotmail.com
+566c995e539fbf06cef19f7e2b640cc77265bea2
+
+tacos_v@gmail.com
+
+1218 usuario
+909 negocio
+1165
+1254
+
+
+
+
+/**
+-- EMAILS HECHOS
+	** BIENVENIDA (YA)
+	** RECUPERAR PASSWORD (YA)
+	** COMENTARIOS EMAIL RECUPERACION 
+	** COMENTARIOS EMAIL ME APUNTO (YA)
+	** SOLICITUD DE AMISTAD (YA)
+	** EMAIL RETIRO DINERO USUARIO (YA)
+	** EMAIL RETIRO DINERO ADMIN (YA)
+	** EMAIL SOLICITUD DE BONIFICACION EMPRESA (YA)
+	** EMAIL SOLICITUD DE BONIFICACION USUARIO (YA)
+	** EMAIL COMENTARIO DE GEOETIQUETA (YA)
+	** EMAIL DE BIENVENIDA DE NEGOCIOS A PULZOS (YA)
+	** EMAIL DE ENVIO DE INBOX NUEVO (YA)
+	** EMAIL DE ENVIO DE RESPUESTA A INBOX (YA)
+	** EMAIL BONIFICACION USUARIO (YA)
+	** EMAIL RECIBO PAGO PAYPULZOS USUARIO (YA)
+	** EMAIL RECIBO PAGO PAYPULZOS NEGOCIO (YA)
+
+
+
+/*** ERRORES A CHECAR EN PULZOS.COM ***/
+-- ERROR EN LA PARTE DE MOVIMIENTOS DE MI CARTERA LO PROVOCA UN ARREGLO VACIO DE LOS DOS QUE MANDO
+   CHECAR CUAL ES EL PROBLEMA (YA)
+-- MISMA EMPRESA TRUENA EN LOS MENSAJES DE FACEBOOK
+-- ARREGLAR EL MENU DE MI CARTERA
+-- QUITARLE AL CORREO DEL ADMINISTRADOR 15 PESOS EN EL CORREO ELECTRONICO
+
+dac92639ae7a0c413c6d66cd43d29d37dcae26de
+
+fdb6fa62beb6638b3d828ba069b42ddd63e73c30
+fdb6fa62beb6638b3d828ba069b42ddd63e73c30
+
+eb27e0620688c31e4d0599d98514fc3dea3d9c60
+
+                    <meta name="viewport" content="width=320, initial-scale=1, user-scalable=no">	
+<link rel="stylesheet" type="text/css" href="http://www.pulzos.com/statics/css/ext/emails/mail.css" />
+                        <link media="only screen and (max-device-width: 480px)" href="http://www.pulzos.com/statics/css/ext/emails/iOSDevice.css" type= "text/css" rel="stylesheet">
+
+
+                            <!-- img src="http://www.pulzos.com/statics/img/mailPulzosCabeceraMovil.jpg" alt="Pulzos Rewards Network" / -->
+
+
+                        <link type="text/css" rel="stylesheet" href="http://www.pulzos.com/statics/css/ext/emails/mail.css"> 
+
+			img src="http://www.pulzos.com/statics/img/mailPulzosPieMovil.jpg" alt="" />
+
+
+4931 6109 0983 3958 --->  221
+
+tel: 01 800 226 2663
+linea bancomer: 36690229
+
+221
+modulo:
+inboxusuarios  (YA)
+views:
+recibidos.php
+.-linea 97: cambie: substr($recibidos->inboxnMensaje,0,25) por esto:substr($recibidos->inboxnMensaje,0,50)
+solo le cambie de 25 a 50
+
+
+ELIMINAR EL REGISTRO Y LA CARPETA 1168
+
+
+registros a eliminar por ser usuarios de pruebas
+
+969 (YA)
+970 (YA)
+971 (YA)
+973 (YA)
+974 (YA)
+975 (YA)
+983 (YA)
+985 (YA)
+994 (YA)
+991 (YA)
+1009 (YA)
+1013 (YA)
+1014 (YA)
+1015 (YA)
+1017 (YA)
+1032 (YA)
+1033 (YA)
+1034 (YA)
+1037 (YA)
+1040 (YA)
+1041 (YA)
+1043 (YA)
+1044 (YA)
+1045 (YA)
+1169 (YA)
+
+1187 (YA)
+1188 (YA)
+1189 (YA)
+1190 (YA)
+1191 (YA)
+1192 (YA)
+1194 (YA)
+1195 (YA)
+1196 (YA)
+1197 (YA)
+1198 (YA)
+1199 (YA)
+1200 (YA)
+1201 (YA)
+1202 (YA)
+1203 (YA)
+
+1204 (YA)
+1205 (YA)
+1206 (YA)
+1207 (YA)
+1208 (YA)
+1209 (YA)
+1210 (YA)
+1211 (YA)
+1212 (YA)
+1213 (YA)
+
+
+
+
+
+
+
+
+
+
+
+////// ELIMINACION DE DOMINIOS RESPALDADOS DE CIG.COM.MX
+
+PHPMAILER (YA DESCARGADO)
+ADWORDSGOOGLE (YA DESCARGADO)
+BANESCOLIINE (YA DESCARGADO)
+BONATERRAAGS.MX (YA DESCARGADO)
+CASAFUERTE.MX (YA DESCARGADO)
+CGI-BIN (YA DESCARGADO)
+CARPETA GIG (YA DESCARGADO)
+COLINASDECALIFORNIA.MX (YA DESCARGADO)
+FORMULARIORECOMENDADOSCOMPARTE (YA DESCARGADO)
+HACIENDA-REAL.MX (YA DESCARGADO)
+HACIENDASANTACRUZ.MX (YA DESCARGADO)
+LA-RIOJA.MX (YA DESCARGADO)
+MOODLE (YA DESCARGADO)
+REALDEHACIENDAS.MX (YA DESCARGADO)
+REALDELSOL.MX (YA DESCARGADO)
+REALDELVALLE.MX (YA DESCARGADO)
+REALDELVALLEMZT.MX (YA DESCARGADO)
+SENDEROSDEMONTEVERDE.MX (YA DESCARGADO)
+VALLEDELASFLORES.MX (YA DESCARGADO)
+VALLEIMPERIAL.MX (YA DESCARGADO)
+VILLADELMAR.MX (YA DESCARGADO)
+VILLAMARINA.MX (YA DESCARGADO)
+TODOS_LOR_ARCHIVOS_SIN_CARPETA (YA DESCARGADO)
+
+///// ELIMINACION DE DOMINIOS RESPALDADOS DE CIGIG.MX
+
+TODOS_LOS_ARCHIVOS_SIN_CARPETA (YA)
+ENCUESTAS (YA)
+HACIENDA-REAL.COM.MX (YA)
+CAMPOBELLO.COM.MX (YA)
+CAMPOBELLO.MX (YA)
+FACEBOOK (YA)
+GIGDI.COM.MX (YA)
+REALDELVALLE.COM.MX (YA)
+SENDEROSDEMONTEVERDE.COM (YA)
+VALLEIMPERIAL.COM (YA)
+VDELMAR.COM (YA)
+COTODIAMANTE.COM (YA)
+CIG.COM.MX (YA)
+BVALLARTA.MX (YA)
+BVALLARTA.COM.MX (YA)
+BVALLARTA.COM (YA)
+BRISAS-VALLARTA.COM (YA)
+BPICHILINGUE.COM (YA)
+CGI-BIN (YA)
+CLUBPUERTADEHIERRO.COM (YA)
+ESPACIOLARIOJA.COM (YA)
+
+///// ELIMINACION DE DOMINIOS DE RESPALDOS DE CIG EN ZAVORDIGITAL.COM (FALTA ELIMINAR LOR ARCHIVOS DE LAS CARPETAS)
+ATUGUSTO.MX (YA) 
+ATUMEDIDA.MX (YA)
+BONATERRAAGS.COM.MX (YA)
+BPICHILINGUE.COM (YA)
+CASAFUERTE.COM.MX (YA)
+CLUBPUERTADEHIERRO.COM (YA)
+COLINASDECALIFORNIA.COM.MX (YA)
+COMPARTE.MX (YA)
+REALDEHACIENDAS.COM.MX (YA)
+REALDELVALLE.COM.MX (YA)
+REALDELVALLEMZT.COM.MX (YA)
+VALLEDELASFLORES.COM.MX (YA)
+VALLEIMPERIAL.COM.MX (YA)
+
+//////// ELIMINACION DE DOMINIOS DE RESPALDOS DE TERRUMG
+terrumg.com.mx (YA)
+terrumg.com (YA)
+terrumg.mx (YA)
+
+
+BAABft5IueeoBAAEevjvEGOvrtsilE8EiSRxFouuISUvLXXim2OMc1qeRpCZCQ0ZA9eJoQaS2gWOrFlWbNOBh9BvwKlUmt6qyW67X6ZA8O8DvTt3iwlR
+
+**** CHECAR LO SIGUIENTE: ****
+
+- OFERTAS DE NEGOCIOS MAXIMO 5
+- IFRAME DE CONNECT DE FACEBOOK Y TWITTER
+- CAMPOS DE PASSWORD EN CONTRASEÑA DE DARSE DE ALTA
+- VALIDACION DE CAMPOS DE LOS REGISTROS DEL USUARIO (libreria javascript que crearemos)
+
+
+
+BAABft5IueeoBAAEevjvEGOvrtsilE8EiSRxFouuISUvLXXim2OMc1qeRpCZCQ0ZA9eJoQaS2gWOrFlWbNOBh9BvwKlUmt6qyW67X6ZA8O8DvTt3iwlR
+
+244309856-d5iFZutPZPB3hdYWq4s2mSs7v69nJxIvWlXMT9rl
+ffhYOZOxMcDxGPa3b5DRTvEP6xMljVoJY2Wie5VXEw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********** DATOS DB ***********/
+
+Added user “zavord5_pulzosDe” with password “zavordigital”.
+Step 3: Add User to the Database
+
+User: zavord5_pulzosDe
+Database: zavord5_pulzosbueno
+
+CUENTA FTP
+
+FTP Username: pulzos@zavordigital.com
+FTP Server: ftp.zavordigital.com
+Password: pulzosZavordigital
+
+
+
+/***
+*
+*
+*
+*
+*
+* 293909
+*
+*
+*
+*
+***/
+
+
+
+
+
+Edward M.:
+It appears the email account is either being hijacked or spoofed. In order to take care of these you want to first change the password of the email account. After that, you want to add SPF records to the cpanel so that no false emails can be sent from another server using the email address. This will prevent any email bounces that you may be receiving. Below is a link that shows how to add SPF records:
+
+Edward M.:
+To add domain keys and spf records to the account, you will want to go to the Email Authentication tool located in the Mail category of the Cpanel. From there you can enable either one or both features. For maximum protection in the SPF records, be sure to check the box under the "All Entry (ALL):" selection.
+
+Edward M.:
+http://www.inmotionhosting.com/support/email/fighting-spam/email-authentication-spf-domainkeys
+
+Edward M.:
+To prevent any incoming mails. You may want to set up Spam Assassin to prevent any spam.
+
+http://www.inmotionhosting.com/support/edu/cpanel/cpanel-email/spamassassin-fighting-spam
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php echo anchor('planesusuarios/get_last_comment/'.$usuario, '', array('style'=>'display:', 'id'=>'urlGet')); ?>
+        </div>
+        <div class="prepend-12 last">
+            <?php echo anchor('planesusuarios/siguientes_diez/'.$usuario,
+                              'ver mas',
+                              array('style'=>'text-decoration: none; color: #660066', 'class'=>'ver-mas-publicaciones')); ?>
+
+
+
+
+42
+1746
+
